@@ -42,7 +42,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201012";
+our $VERSION = "0.201013";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +68,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2010l";
+use constant olson_version => "2010m";
 
 =back
 
@@ -608,9 +608,9 @@ use constant olson_country_selection => {
 				olson_description => "Syowa Station, E Ongul I",
 				timezone_name => "Antarctica/Syowa",
 			},
-			"Vostok Station, S Magnetic Pole" => {
+			"Vostok Station, Lake Vostok" => {
 				location_coords => "-7824+10654",
-				olson_description => "Vostok Station, S Magnetic Pole",
+				olson_description => "Vostok Station, Lake Vostok",
 				timezone_name => "Antarctica/Vostok",
 			},
 		},
