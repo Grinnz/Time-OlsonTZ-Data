@@ -42,7 +42,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201015";
+our $VERSION = "0.201101";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +68,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2010o";
+use constant olson_version => "2011a";
 
 =back
 
@@ -4047,7 +4047,7 @@ developed by Andrew Main (Zefram) <zefram@fysh.org>.
 The Olson timezone database is is the public domain.
 
 The C<Time::OlsonTZ::Data> Perl module wrapper for the database is
-Copyright (C) 2010 Andrew Main (Zefram) <zefram@fysh.org>.
+Copyright (C) 2010, 2011 Andrew Main (Zefram) <zefram@fysh.org>.
 
 =head1 LICENSE
 

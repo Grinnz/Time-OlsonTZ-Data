@@ -30,7 +30,7 @@ COPYRIGHT
 The Olson timezone database is is the public domain.
 
 The Time::OlsonTZ::Data Perl module wrapper for the database is
-Copyright (C) 2010 Andrew Main (Zefram) <zefram@fysh.org>.
+Copyright (C) 2010, 2011 Andrew Main (Zefram) <zefram@fysh.org>.
 
 LICENSE
 
