@@ -155,6 +155,7 @@ lib/Time/OlsonTZ/Data/America/New_York.tz
 lib/Time/OlsonTZ/Data/America/Nipigon.tz
 lib/Time/OlsonTZ/Data/America/Nome.tz
 lib/Time/OlsonTZ/Data/America/Noronha.tz
+lib/Time/OlsonTZ/Data/America/North_Dakota/Beulah.tz
 lib/Time/OlsonTZ/Data/America/North_Dakota/Center.tz
 lib/Time/OlsonTZ/Data/America/North_Dakota/New_Salem.tz
 lib/Time/OlsonTZ/Data/America/Ojinaga.tz
