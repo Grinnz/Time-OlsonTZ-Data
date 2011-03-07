@@ -42,7 +42,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201102";
+our $VERSION = "0.201103";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +68,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011b";
+use constant olson_version => "2011c";
 
 =back
 
@@ -126,10 +126,10 @@ use constant olson_canonical_names => { map { ($_ => undef) } qw(
 	America/Kentucky/Louisville America/Kentucky/Monticello America/La_Paz
 	America/Lima America/Los_Angeles America/Maceio America/Managua
 	America/Manaus America/Martinique America/Matamoros America/Mazatlan
-	America/Menominee America/Merida America/Mexico_City America/Miquelon
-	America/Moncton America/Monterrey America/Montevideo America/Montreal
-	America/Montserrat America/Nassau America/New_York America/Nipigon
-	America/Nome America/Noronha America/North_Dakota/Beulah
+	America/Menominee America/Merida America/Metlakatla America/Mexico_City
+	America/Miquelon America/Moncton America/Monterrey America/Montevideo
+	America/Montreal America/Montserrat America/Nassau America/New_York
+	America/Nipigon America/Nome America/Noronha America/North_Dakota/Beulah
 	America/North_Dakota/Center America/North_Dakota/New_Salem
 	America/Ojinaga America/Panama America/Pangnirtung America/Paramaribo
 	America/Phoenix America/Port-au-Prince America/Port_of_Spain
@@ -137,49 +137,50 @@ use constant olson_canonical_names => { map { ($_ => undef) } qw(
 	America/Rankin_Inlet America/Recife America/Regina America/Resolute
 	America/Rio_Branco America/Santa_Isabel America/Santarem
 	America/Santiago America/Santo_Domingo America/Sao_Paulo
-	America/Scoresbysund America/St_Johns America/St_Kitts America/St_Lucia
-	America/St_Thomas America/St_Vincent America/Swift_Current
-	America/Tegucigalpa America/Thule America/Thunder_Bay America/Tijuana
-	America/Toronto America/Tortola America/Vancouver America/Whitehorse
-	America/Winnipeg America/Yakutat America/Yellowknife Antarctica/Casey
-	Antarctica/Davis Antarctica/DumontDUrville Antarctica/Macquarie
-	Antarctica/Mawson Antarctica/McMurdo Antarctica/Palmer
-	Antarctica/Rothera Antarctica/Syowa Antarctica/Vostok Asia/Aden
-	Asia/Almaty Asia/Amman Asia/Anadyr Asia/Aqtau Asia/Aqtobe Asia/Ashgabat
-	Asia/Baghdad Asia/Bahrain Asia/Baku Asia/Bangkok Asia/Beirut
-	Asia/Bishkek Asia/Brunei Asia/Choibalsan Asia/Chongqing Asia/Colombo
-	Asia/Damascus Asia/Dhaka Asia/Dili Asia/Dubai Asia/Dushanbe Asia/Gaza
-	Asia/Harbin Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd Asia/Irkutsk
-	Asia/Jakarta Asia/Jayapura Asia/Jerusalem Asia/Kabul Asia/Kamchatka
-	Asia/Karachi Asia/Kashgar Asia/Kathmandu Asia/Kolkata Asia/Krasnoyarsk
-	Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan
-	Asia/Makassar Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk
-	Asia/Novosibirsk Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak
-	Asia/Pyongyang Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh
-	Asia/Riyadh87 Asia/Riyadh88 Asia/Riyadh89 Asia/Sakhalin Asia/Samarkand
-	Asia/Seoul Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent
-	Asia/Tbilisi Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar
-	Asia/Urumqi Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
-	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
-	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
-	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/St_Helena
-	Atlantic/Stanley Australia/Adelaide Australia/Brisbane
-	Australia/Broken_Hill Australia/Currie Australia/Darwin Australia/Eucla
-	Australia/Hobart Australia/Lindeman Australia/Lord_Howe
-	Australia/Melbourne Australia/Perth Australia/Sydney CET CST6CDT EET EST
-	EST5EDT Etc/GMT Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2
-	Etc/GMT+3 Etc/GMT+4 Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9
-	Etc/GMT-1 Etc/GMT-10 Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14
-	Etc/GMT-2 Etc/GMT-3 Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8
-	Etc/GMT-9 Etc/UCT Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens
-	Europe/Belgrade Europe/Berlin Europe/Brussels Europe/Bucharest
-	Europe/Budapest Europe/Chisinau Europe/Copenhagen Europe/Dublin
-	Europe/Gibraltar Europe/Helsinki Europe/Istanbul Europe/Kaliningrad
-	Europe/Kiev Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid
-	Europe/Malta Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo
-	Europe/Paris Europe/Prague Europe/Riga Europe/Rome Europe/Samara
-	Europe/Simferopol Europe/Sofia Europe/Stockholm Europe/Tallinn
-	Europe/Tirane Europe/Uzhgorod Europe/Vaduz Europe/Vienna Europe/Vilnius
+	America/Scoresbysund America/Sitka America/St_Johns America/St_Kitts
+	America/St_Lucia America/St_Thomas America/St_Vincent
+	America/Swift_Current America/Tegucigalpa America/Thule
+	America/Thunder_Bay America/Tijuana America/Toronto America/Tortola
+	America/Vancouver America/Whitehorse America/Winnipeg America/Yakutat
+	America/Yellowknife Antarctica/Casey Antarctica/Davis
+	Antarctica/DumontDUrville Antarctica/Macquarie Antarctica/Mawson
+	Antarctica/McMurdo Antarctica/Palmer Antarctica/Rothera Antarctica/Syowa
+	Antarctica/Vostok Asia/Aden Asia/Almaty Asia/Amman Asia/Anadyr
+	Asia/Aqtau Asia/Aqtobe Asia/Ashgabat Asia/Baghdad Asia/Bahrain Asia/Baku
+	Asia/Bangkok Asia/Beirut Asia/Bishkek Asia/Brunei Asia/Choibalsan
+	Asia/Chongqing Asia/Colombo Asia/Damascus Asia/Dhaka Asia/Dili
+	Asia/Dubai Asia/Dushanbe Asia/Gaza Asia/Harbin Asia/Ho_Chi_Minh
+	Asia/Hong_Kong Asia/Hovd Asia/Irkutsk Asia/Jakarta Asia/Jayapura
+	Asia/Jerusalem Asia/Kabul Asia/Kamchatka Asia/Karachi Asia/Kashgar
+	Asia/Kathmandu Asia/Kolkata Asia/Krasnoyarsk Asia/Kuala_Lumpur
+	Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan Asia/Makassar
+	Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk
+	Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang
+	Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh Asia/Riyadh87
+	Asia/Riyadh88 Asia/Riyadh89 Asia/Sakhalin Asia/Samarkand Asia/Seoul
+	Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent Asia/Tbilisi
+	Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi
+	Asia/Vientiane Asia/Vladivostok Asia/Yakutsk Asia/Yekaterinburg
+	Asia/Yerevan Atlantic/Azores Atlantic/Bermuda Atlantic/Canary
+	Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira Atlantic/Reykjavik
+	Atlantic/South_Georgia Atlantic/St_Helena Atlantic/Stanley
+	Australia/Adelaide Australia/Brisbane Australia/Broken_Hill
+	Australia/Currie Australia/Darwin Australia/Eucla Australia/Hobart
+	Australia/Lindeman Australia/Lord_Howe Australia/Melbourne
+	Australia/Perth Australia/Sydney CET CST6CDT EET EST EST5EDT Etc/GMT
+	Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2 Etc/GMT+3 Etc/GMT+4
+	Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9 Etc/GMT-1 Etc/GMT-10
+	Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14 Etc/GMT-2 Etc/GMT-3
+	Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8 Etc/GMT-9 Etc/UCT
+	Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens Europe/Belgrade
+	Europe/Berlin Europe/Brussels Europe/Bucharest Europe/Budapest
+	Europe/Chisinau Europe/Copenhagen Europe/Dublin Europe/Gibraltar
+	Europe/Helsinki Europe/Istanbul Europe/Kaliningrad Europe/Kiev
+	Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid Europe/Malta
+	Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo Europe/Paris
+	Europe/Prague Europe/Riga Europe/Rome Europe/Samara Europe/Simferopol
+	Europe/Sofia Europe/Stockholm Europe/Tallinn Europe/Tirane
+	Europe/Uzhgorod Europe/Vaduz Europe/Vienna Europe/Vilnius
 	Europe/Volgograd Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory
 	HST Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
 	Indian/Comoro Indian/Kerguelen Indian/Mahe Indian/Maldives
@@ -3651,6 +3652,11 @@ use constant olson_country_selection => {
 				olson_description => "Alaska Time - Alaska panhandle neck",
 				timezone_name => "America/Yakutat",
 			},
+			"Alaska Time - southeast Alaska panhandle" => {
+				location_coords => "+571035-1351807",
+				olson_description => "Alaska Time - southeast Alaska panhandle",
+				timezone_name => "America/Sitka",
+			},
 			"Alaska Time - west Alaska" => {
 				location_coords => "+643004-1652423",
 				olson_description => "Alaska Time - west Alaska",
@@ -3750,6 +3756,11 @@ use constant olson_country_selection => {
 				location_coords => "+211825-1575130",
 				olson_description => "Hawaii",
 				timezone_name => "Pacific/Honolulu",
+			},
+			"Metlakatla Time - Annette Island" => {
+				location_coords => "+550737-1313435",
+				olson_description => "Metlakatla Time - Annette Island",
+				timezone_name => "America/Metlakatla",
 			},
 			"Mountain Standard Time - Arizona" => {
 				location_coords => "+332654-1120424",

@@ -143,6 +143,7 @@ lib/Time/OlsonTZ/Data/America/Matamoros.tz
 lib/Time/OlsonTZ/Data/America/Mazatlan.tz
 lib/Time/OlsonTZ/Data/America/Menominee.tz
 lib/Time/OlsonTZ/Data/America/Merida.tz
+lib/Time/OlsonTZ/Data/America/Metlakatla.tz
 lib/Time/OlsonTZ/Data/America/Mexico_City.tz
 lib/Time/OlsonTZ/Data/America/Miquelon.tz
 lib/Time/OlsonTZ/Data/America/Moncton.tz
@@ -179,6 +180,7 @@ lib/Time/OlsonTZ/Data/America/Santiago.tz
 lib/Time/OlsonTZ/Data/America/Santo_Domingo.tz
 lib/Time/OlsonTZ/Data/America/Sao_Paulo.tz
 lib/Time/OlsonTZ/Data/America/Scoresbysund.tz
+lib/Time/OlsonTZ/Data/America/Sitka.tz
 lib/Time/OlsonTZ/Data/America/St_Johns.tz
 lib/Time/OlsonTZ/Data/America/St_Kitts.tz
 lib/Time/OlsonTZ/Data/America/St_Lucia.tz
@@ -451,3 +453,4 @@ t/tzfile_link.t
 t/tzfile_usable.t
 t/tzfile_version.t
 t/version.t
+META.json
