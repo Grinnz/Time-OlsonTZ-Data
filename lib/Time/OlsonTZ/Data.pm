@@ -42,7 +42,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201103";
+our $VERSION = "0.201104";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +68,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011c";
+use constant olson_version => "2011d";
 
 =back
 
