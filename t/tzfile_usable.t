@@ -4,7 +4,7 @@ use strict;
 BEGIN {
 	eval {
 		require DateTime::TimeZone::Tzfile;
-		DateTime::TimeZone::Tzfile->VERSION(0.004);
+		DateTime::TimeZone::Tzfile->VERSION(0.005);
 	};
 	if($@ ne "") {
 		require Test::More;
@@ -18,7 +18,10 @@ BEGIN { use_ok "Time::OlsonTZ::Data", qw(olson_canonical_names olson_tzfile); }
 
 my $failures = 0;
 foreach(sort keys %{olson_canonical_names()}) {
-	DateTime::TimeZone::Tzfile->new(olson_tzfile($_)) or $failures++;
+	unless(eval { DateTime::TimeZone::Tzfile->new(olson_tzfile($_)); 1}) {
+		diag "$_: $@";
+		$failures++;
+	}
 }
 is $failures, 0;
 

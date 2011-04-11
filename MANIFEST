@@ -1,6 +1,7 @@
 Build.PL
 Changes
 MANIFEST
+META.json
 META.yml
 Makefile.PL
 README
@@ -453,4 +454,3 @@ t/tzfile_link.t
 t/tzfile_usable.t
 t/tzfile_version.t
 t/version.t
-META.json

@@ -1,3 +1,17 @@
+version 0.201106; 2011-04-11
+
+  * Olson database version 2011f: 437 canonical zones, 140 links
+
+  * in t/tzfile_usable.t, require a version of DateTime::TimeZone::Tzfile
+    that will read the tzfiles in binary mode
+
+  * in tests applied to all tzfiles, produce more useful diagnostics
+    on failure
+
+  * include META.json in distribution
+
+  * add MYMETA.json to .cvsignore
+
 version 0.201105; 2011-04-01
 
   * Olson database version 2011e: 437 canonical zones, 140 links

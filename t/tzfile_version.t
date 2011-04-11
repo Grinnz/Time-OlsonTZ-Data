@@ -15,9 +15,18 @@ BEGIN { use_ok "Time::OlsonTZ::Data", qw(olson_canonical_names olson_tzfile); }
 
 my $failures = 0;
 foreach(sort keys %{olson_canonical_names()}) {
-	my $h = IO::File->new(olson_tzfile($_), "r") or $failures++;
+	my $f = olson_tzfile($_);
+	my $h = IO::File->new($f, "r");
+	unless($h) {
+		diag "$_: failed to open $f";
+		$failures++;
+		next;
+	}
 	local $/ = \5;
-	$h->getline eq "TZif2" or $failures++;
+	unless($h->getline eq "TZif2") {
+		diag "$_: $f is not of version 2";
+		$failures++;
+	}
 }
 is $failures, 0;
 
