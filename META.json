@@ -46,7 +46,7 @@
    "provides" : {
       "Time::OlsonTZ::Data" : {
          "file" : "lib/Time/OlsonTZ/Data.pm",
-         "version" : "0.201106"
+         "version" : "0.201107"
       }
    },
    "release_status" : "stable",
@@ -55,5 +55,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.201106"
+   "version" : "0.201107"
 }
