@@ -42,7 +42,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201107";
+our $VERSION = "0.201108";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +68,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011g";
+use constant olson_version => "2011h";
 
 =back
 
@@ -255,7 +255,9 @@ use constant olson_links => {
 	"America/Indianapolis" => "America/Indiana/Indianapolis",
 	"America/Jujuy" => "America/Argentina/Jujuy",
 	"America/Knox_IN" => "America/Indiana/Knox",
+	"America/Kralendijk" => "America/Curacao",
 	"America/Louisville" => "America/Kentucky/Louisville",
+	"America/Lower_Princes" => "America/Curacao",
 	"America/Marigot" => "America/Guadeloupe",
 	"America/Mendoza" => "America/Argentina/Mendoza",
 	"America/Porto_Acre" => "America/Rio_Branco",
@@ -530,17 +532,6 @@ use constant olson_country_selection => {
 				location_coords => "+4011+04430",
 				olson_description => "",
 				timezone_name => "Asia/Yerevan",
-			},
-		},
-	},
-	AN => {
-		alpha2_code => "AN",
-		olson_name => "Netherlands Antilles",
-		regions => {
-			"" => {
-				location_coords => "+1211-06900",
-				olson_description => "",
-				timezone_name => "America/Curacao",
 			},
 		},
 	},
@@ -943,6 +934,17 @@ use constant olson_country_selection => {
 				location_coords => "-1630-06809",
 				olson_description => "",
 				timezone_name => "America/La_Paz",
+			},
+		},
+	},
+	BQ => {
+		alpha2_code => "BQ",
+		olson_name => "Bonaire Sint Eustatius & Saba",
+		regions => {
+			"" => {
+				location_coords => "+120903-0681636",
+				olson_description => "",
+				timezone_name => "America/Kralendijk",
 			},
 		},
 	},
@@ -1409,6 +1411,17 @@ use constant olson_country_selection => {
 				location_coords => "+1455-02331",
 				olson_description => "",
 				timezone_name => "Atlantic/Cape_Verde",
+			},
+		},
+	},
+	CW => {
+		alpha2_code => "CW",
+		olson_name => "Curacao",
+		regions => {
+			"" => {
+				location_coords => "+1211-06900",
+				olson_description => "",
+				timezone_name => "America/Curacao",
 			},
 		},
 	},
@@ -3374,6 +3387,17 @@ use constant olson_country_selection => {
 				location_coords => "+1342-08912",
 				olson_description => "",
 				timezone_name => "America/El_Salvador",
+			},
+		},
+	},
+	SX => {
+		alpha2_code => "SX",
+		olson_name => "Sint Maarten",
+		regions => {
+			"" => {
+				location_coords => "+180305-0630250",
+				olson_description => "",
+				timezone_name => "America/Lower_Princes",
 			},
 		},
 	},
