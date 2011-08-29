@@ -42,7 +42,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201108";
+our $VERSION = "0.201109";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +68,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011h";
+use constant olson_version => "2011i";
 
 =back
 
@@ -93,7 +93,7 @@ use constant olson_canonical_names => { map { ($_ => undef) } qw(
 	Africa/Casablanca Africa/Ceuta Africa/Conakry Africa/Dakar
 	Africa/Dar_es_Salaam Africa/Djibouti Africa/Douala Africa/El_Aaiun
 	Africa/Freetown Africa/Gaborone Africa/Harare Africa/Johannesburg
-	Africa/Kampala Africa/Khartoum Africa/Kigali Africa/Kinshasa
+	Africa/Juba Africa/Kampala Africa/Khartoum Africa/Kigali Africa/Kinshasa
 	Africa/Lagos Africa/Libreville Africa/Lome Africa/Luanda
 	Africa/Lubumbashi Africa/Lusaka Africa/Malabo Africa/Maputo
 	Africa/Maseru Africa/Mbabane Africa/Mogadishu Africa/Monrovia
@@ -1118,6 +1118,11 @@ use constant olson_country_selection => {
 				olson_description => "Atlantic Time - Nova Scotia - places that did not observe DST 1966-1971",
 				timezone_name => "America/Glace_Bay",
 			},
+			"Central Standard Time - Resolute, Nunavut" => {
+				location_coords => "+744144-0944945",
+				olson_description => "Central Standard Time - Resolute, Nunavut",
+				timezone_name => "America/Resolute",
+			},
 			"Central Standard Time - Saskatchewan - midwest" => {
 				location_coords => "+5017-10750",
 				olson_description => "Central Standard Time - Saskatchewan - midwest",
@@ -1147,11 +1152,6 @@ use constant olson_country_selection => {
 				location_coords => "+484531-0913718",
 				olson_description => "Eastern Standard Time - Atikokan, Ontario and Southampton I, Nunavut",
 				timezone_name => "America/Atikokan",
-			},
-			"Eastern Standard Time - Resolute, Nunavut" => {
-				location_coords => "+744144-0944945",
-				olson_description => "Eastern Standard Time - Resolute, Nunavut",
-				timezone_name => "America/Resolute",
 			},
 			"Eastern Time - Ontario & Quebec - places that did not observe DST 1967-1973" => {
 				location_coords => "+4901-08816",
@@ -3365,6 +3365,17 @@ use constant olson_country_selection => {
 				location_coords => "+0550-05510",
 				olson_description => "",
 				timezone_name => "America/Paramaribo",
+			},
+		},
+	},
+	SS => {
+		alpha2_code => "SS",
+		olson_name => "South Sudan",
+		regions => {
+			"" => {
+				location_coords => "+0451+03136",
+				olson_description => "",
+				timezone_name => "Africa/Juba",
 			},
 		},
 	},
