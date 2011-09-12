@@ -23,7 +23,7 @@ name: Time-OlsonTZ-Data
 provides:
   Time::OlsonTZ::Data:
     file: lib/Time/OlsonTZ/Data.pm
-    version: 0.201109
+    version: 0.201110
 requires:
   Carp: 0
   Exporter: 0
@@ -34,4 +34,4 @@ requires:
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.201109
+version: 0.201110

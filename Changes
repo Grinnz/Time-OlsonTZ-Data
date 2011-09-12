@@ -1,3 +1,7 @@
+version 0.201110; 2011-09-12
+
+  * Olson database version 2011j: 438 canonical zones, 142 links
+
 version 0.201109; 2011-08-29
 
   * Olson database version 2011i: 438 canonical zones, 142 links
