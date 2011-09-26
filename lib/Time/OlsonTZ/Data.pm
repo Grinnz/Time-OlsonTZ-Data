@@ -37,12 +37,13 @@ package Time::OlsonTZ::Data;
 
 { use 5.006; }
 use warnings;
+no if "$]" < 5.007, "warnings", "deprecated";
 use strict;
 
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201110";
+our $VERSION = "0.201111";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -68,7 +69,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011j";
+use constant olson_version => "2011k";
 
 =back
 
@@ -149,38 +150,38 @@ use constant olson_canonical_names => { map { ($_ => undef) } qw(
 	Asia/Aqtau Asia/Aqtobe Asia/Ashgabat Asia/Baghdad Asia/Bahrain Asia/Baku
 	Asia/Bangkok Asia/Beirut Asia/Bishkek Asia/Brunei Asia/Choibalsan
 	Asia/Chongqing Asia/Colombo Asia/Damascus Asia/Dhaka Asia/Dili
-	Asia/Dubai Asia/Dushanbe Asia/Gaza Asia/Harbin Asia/Ho_Chi_Minh
-	Asia/Hong_Kong Asia/Hovd Asia/Irkutsk Asia/Jakarta Asia/Jayapura
-	Asia/Jerusalem Asia/Kabul Asia/Kamchatka Asia/Karachi Asia/Kashgar
-	Asia/Kathmandu Asia/Kolkata Asia/Krasnoyarsk Asia/Kuala_Lumpur
-	Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan Asia/Makassar
-	Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk
-	Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang
-	Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh Asia/Riyadh87
-	Asia/Riyadh88 Asia/Riyadh89 Asia/Sakhalin Asia/Samarkand Asia/Seoul
-	Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent Asia/Tbilisi
-	Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi
-	Asia/Vientiane Asia/Vladivostok Asia/Yakutsk Asia/Yekaterinburg
-	Asia/Yerevan Atlantic/Azores Atlantic/Bermuda Atlantic/Canary
-	Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira Atlantic/Reykjavik
-	Atlantic/South_Georgia Atlantic/St_Helena Atlantic/Stanley
-	Australia/Adelaide Australia/Brisbane Australia/Broken_Hill
-	Australia/Currie Australia/Darwin Australia/Eucla Australia/Hobart
-	Australia/Lindeman Australia/Lord_Howe Australia/Melbourne
-	Australia/Perth Australia/Sydney CET CST6CDT EET EST EST5EDT Etc/GMT
-	Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2 Etc/GMT+3 Etc/GMT+4
-	Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9 Etc/GMT-1 Etc/GMT-10
-	Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14 Etc/GMT-2 Etc/GMT-3
-	Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8 Etc/GMT-9 Etc/UCT
-	Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens Europe/Belgrade
-	Europe/Berlin Europe/Brussels Europe/Bucharest Europe/Budapest
-	Europe/Chisinau Europe/Copenhagen Europe/Dublin Europe/Gibraltar
-	Europe/Helsinki Europe/Istanbul Europe/Kaliningrad Europe/Kiev
-	Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid Europe/Malta
-	Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo Europe/Paris
-	Europe/Prague Europe/Riga Europe/Rome Europe/Samara Europe/Simferopol
-	Europe/Sofia Europe/Stockholm Europe/Tallinn Europe/Tirane
-	Europe/Uzhgorod Europe/Vaduz Europe/Vienna Europe/Vilnius
+	Asia/Dubai Asia/Dushanbe Asia/Gaza Asia/Harbin Asia/Hebron
+	Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd Asia/Irkutsk Asia/Jakarta
+	Asia/Jayapura Asia/Jerusalem Asia/Kabul Asia/Kamchatka Asia/Karachi
+	Asia/Kashgar Asia/Kathmandu Asia/Kolkata Asia/Krasnoyarsk
+	Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan
+	Asia/Makassar Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk
+	Asia/Novosibirsk Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak
+	Asia/Pyongyang Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh
+	Asia/Riyadh87 Asia/Riyadh88 Asia/Riyadh89 Asia/Sakhalin Asia/Samarkand
+	Asia/Seoul Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent
+	Asia/Tbilisi Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar
+	Asia/Urumqi Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
+	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
+	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
+	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/St_Helena
+	Atlantic/Stanley Australia/Adelaide Australia/Brisbane
+	Australia/Broken_Hill Australia/Currie Australia/Darwin Australia/Eucla
+	Australia/Hobart Australia/Lindeman Australia/Lord_Howe
+	Australia/Melbourne Australia/Perth Australia/Sydney CET CST6CDT EET EST
+	EST5EDT Etc/GMT Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2
+	Etc/GMT+3 Etc/GMT+4 Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9
+	Etc/GMT-1 Etc/GMT-10 Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14
+	Etc/GMT-2 Etc/GMT-3 Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8
+	Etc/GMT-9 Etc/UCT Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens
+	Europe/Belgrade Europe/Berlin Europe/Brussels Europe/Bucharest
+	Europe/Budapest Europe/Chisinau Europe/Copenhagen Europe/Dublin
+	Europe/Gibraltar Europe/Helsinki Europe/Istanbul Europe/Kaliningrad
+	Europe/Kiev Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid
+	Europe/Malta Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo
+	Europe/Paris Europe/Prague Europe/Riga Europe/Rome Europe/Samara
+	Europe/Simferopol Europe/Sofia Europe/Stockholm Europe/Tallinn
+	Europe/Tirane Europe/Uzhgorod Europe/Vaduz Europe/Vienna Europe/Vilnius
 	Europe/Volgograd Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory
 	HST Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
 	Indian/Comoro Indian/Kerguelen Indian/Mahe Indian/Maldives
@@ -3012,10 +3013,15 @@ use constant olson_country_selection => {
 		alpha2_code => "PS",
 		olson_name => "Palestine",
 		regions => {
-			"" => {
+			"Gaza Strip" => {
 				location_coords => "+3130+03428",
-				olson_description => "",
+				olson_description => "Gaza Strip",
 				timezone_name => "Asia/Gaza",
+			},
+			"West Bank" => {
+				location_coords => "+313200+0350542",
+				olson_description => "West Bank",
+				timezone_name => "Asia/Hebron",
 			},
 		},
 	},

@@ -25,6 +25,7 @@ my $build = Module::Build->new(
 		"Carp" => 0,
 		"Exporter" => 0,
 		"File::Spec" => 0,
+		"if" => 0,
 		"parent" => 0,
 		"perl" => "5.006",
 		"strict" => 0,
