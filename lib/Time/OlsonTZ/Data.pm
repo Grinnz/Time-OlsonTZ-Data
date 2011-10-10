@@ -4,9 +4,13 @@ Time::OlsonTZ::Data - Olson timezone data
 
 =head1 SYNOPSIS
 
-	use Time::OlsonTZ::Data qw(olson_version);
+	use Time::OlsonTZ::Data qw(
+		olson_version olson_code_version olson_data_version
+	);
 
 	$version = olson_version;
+	$version = olson_code_version;
+	$version = olson_data_version;
 
 	use Time::OlsonTZ::Data qw(
 		olson_canonical_names olson_link_names olson_all_names
@@ -43,11 +47,11 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201111";
+our $VERSION = "0.201112";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
-	olson_version
+	olson_version olson_code_version olson_data_version
 	olson_canonical_names olson_link_names olson_all_names
 	olson_links
 	olson_country_selection
@@ -69,7 +73,25 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011k";
+use constant olson_version => "2011l";
+
+=item olson_code_version
+
+Returns the version number of the code part of the database that this
+module encapsulates.
+
+=cut
+
+use constant olson_code_version => "2011i";
+
+=item olson_data_version
+
+Returns the version number of the data part of the database that this
+module encapsulates.
+
+=cut
+
+use constant olson_data_version => "2011l";
 
 =back
 
@@ -430,11 +452,11 @@ key in the B<regions> hash.)
 
 =item B<timezone_name>
 
-Name of the Olson timezone used in this region.  This is not necessarily
-a canonical name (it may be a link).  Typically, where there are aliases
-or identical canonical zones, a name is chosen that refers to a location
-in the country of interest.  It is guaranteed that the named timezone
-exists in the database.
+Name of the Olson timezone used in this region.  The named timezone is
+guaranteed to exist in the database, but not necessarily as a canonical
+name (it may be a link).  Typically, where there are aliases or identical
+canonical zones, a name is chosen that refers to a location in the
+country of interest.
 
 =item B<location_coords>
 
@@ -4094,7 +4116,7 @@ L<tzfile(5)>
 
 The Olson timezone database was compiled by Arthur David Olson, Paul
 Eggert, and many others.  It is maintained by the denizens of the mailing
-list <tz@elsie.nci.nih.gov>.
+list <tz@iana.org> (formerly <tz@elsie.nci.nih.gov>).
 
 The C<Time::OlsonTZ::Data> Perl module wrapper for the database was
 developed by Andrew Main (Zefram) <zefram@fysh.org>.

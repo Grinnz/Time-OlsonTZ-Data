@@ -20,7 +20,7 @@ AUTHOR
 
 The Olson timezone database was compiled by Arthur David Olson, Paul
 Eggert, and many others.  It is maintained by the denizens of the mailing
-list <tz@elsie.nci.nih.gov>.
+list <tz@iana.org> (formerly <tz@elsie.nci.nih.gov>).
 
 The Time::OlsonTZ::Data Perl module wrapper for the database was developed
 by Andrew Main (Zefram) <zefram@fysh.org>.
