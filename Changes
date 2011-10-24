@@ -1,3 +1,9 @@
+version 0.201113; 2011-10-24
+
+  * Olson database version 2011m (code 2011i, data 2011m), with one-off
+    fix for missing Moldova region description: 440 canonical zones,
+    141 links
+
 version 0.201112; 2011-10-10
 
   * Olson database version 2011l (code 2011i, data 2011l): 439 canonical
