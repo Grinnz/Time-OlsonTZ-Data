@@ -1,3 +1,8 @@
+version 0.201114; 2011-10-31
+
+  * Olson database version 2011n (code 2011i, data 2011n): 439 canonical
+    zones, 142 links
+
 version 0.201113; 2011-10-24
 
   * Olson database version 2011m (code 2011i, data 2011m), with one-off

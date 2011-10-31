@@ -47,7 +47,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201113";
+our $VERSION = "0.201114";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -73,7 +73,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011m";
+use constant olson_version => "2011n";
 
 =item olson_code_version
 
@@ -91,7 +91,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2011m";
+use constant olson_data_version => "2011n";
 
 =back
 
@@ -203,21 +203,21 @@ use constant olson_canonical_names => { map { ($_ => undef) } qw(
 	Europe/Malta Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo
 	Europe/Paris Europe/Prague Europe/Riga Europe/Rome Europe/Samara
 	Europe/Simferopol Europe/Sofia Europe/Stockholm Europe/Tallinn
-	Europe/Tirane Europe/Tiraspol Europe/Uzhgorod Europe/Vaduz Europe/Vienna
-	Europe/Vilnius Europe/Volgograd Europe/Warsaw Europe/Zaporozhye
-	Europe/Zurich Factory HST Indian/Antananarivo Indian/Chagos
-	Indian/Christmas Indian/Cocos Indian/Comoro Indian/Kerguelen Indian/Mahe
-	Indian/Maldives Indian/Mauritius Indian/Mayotte Indian/Reunion MET MST
-	MST7MDT PST8PDT Pacific/Apia Pacific/Auckland Pacific/Chatham
-	Pacific/Chuuk Pacific/Easter Pacific/Efate Pacific/Enderbury
-	Pacific/Fakaofo Pacific/Fiji Pacific/Funafuti Pacific/Galapagos
-	Pacific/Gambier Pacific/Guadalcanal Pacific/Guam Pacific/Honolulu
-	Pacific/Johnston Pacific/Kiritimati Pacific/Kosrae Pacific/Kwajalein
-	Pacific/Majuro Pacific/Marquesas Pacific/Midway Pacific/Nauru
-	Pacific/Niue Pacific/Norfolk Pacific/Noumea Pacific/Pago_Pago
-	Pacific/Palau Pacific/Pitcairn Pacific/Pohnpei Pacific/Port_Moresby
-	Pacific/Rarotonga Pacific/Saipan Pacific/Tahiti Pacific/Tarawa
-	Pacific/Tongatapu Pacific/Wake Pacific/Wallis WET
+	Europe/Tirane Europe/Uzhgorod Europe/Vaduz Europe/Vienna Europe/Vilnius
+	Europe/Volgograd Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory
+	HST Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
+	Indian/Comoro Indian/Kerguelen Indian/Mahe Indian/Maldives
+	Indian/Mauritius Indian/Mayotte Indian/Reunion MET MST MST7MDT PST8PDT
+	Pacific/Apia Pacific/Auckland Pacific/Chatham Pacific/Chuuk
+	Pacific/Easter Pacific/Efate Pacific/Enderbury Pacific/Fakaofo
+	Pacific/Fiji Pacific/Funafuti Pacific/Galapagos Pacific/Gambier
+	Pacific/Guadalcanal Pacific/Guam Pacific/Honolulu Pacific/Johnston
+	Pacific/Kiritimati Pacific/Kosrae Pacific/Kwajalein Pacific/Majuro
+	Pacific/Marquesas Pacific/Midway Pacific/Nauru Pacific/Niue
+	Pacific/Norfolk Pacific/Noumea Pacific/Pago_Pago Pacific/Palau
+	Pacific/Pitcairn Pacific/Pohnpei Pacific/Port_Moresby Pacific/Rarotonga
+	Pacific/Saipan Pacific/Tahiti Pacific/Tarawa Pacific/Tongatapu
+	Pacific/Wake Pacific/Wallis WET
 ) };
 
 =item olson_link_names
@@ -351,6 +351,7 @@ use constant olson_links => {
 	"Europe/San_Marino" => "Europe/Rome",
 	"Europe/Sarajevo" => "Europe/Belgrade",
 	"Europe/Skopje" => "Europe/Belgrade",
+	"Europe/Tiraspol" => "Europe/Chisinau",
 	"Europe/Vatican" => "Europe/Rome",
 	"Europe/Zagreb" => "Europe/Belgrade",
 	GB => "Europe/London",
@@ -2460,14 +2461,9 @@ use constant olson_country_selection => {
 		alpha2_code => "MD",
 		olson_name => "Moldova",
 		regions => {
-			Pridnestrovie => {
-				location_coords => "+4651+02938",
-				olson_description => "Pridnestrovie",
-				timezone_name => "Europe/Tiraspol",
-			},
-			"most locations" => {
+			"" => {
 				location_coords => "+4700+02850",
-				olson_description => "most locations",
+				olson_description => "",
 				timezone_name => "Europe/Chisinau",
 			},
 		},
