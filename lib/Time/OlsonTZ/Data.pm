@@ -47,7 +47,7 @@ use strict;
 use Carp qw(croak);
 use File::Spec ();
 
-our $VERSION = "0.201114";
+our $VERSION = "0.201201";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -73,7 +73,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2011n";
+use constant olson_version => "2012a";
 
 =item olson_code_version
 
@@ -82,7 +82,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2011i";
+use constant olson_code_version => "2012a";
 
 =item olson_data_version
 
@@ -91,7 +91,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2011n";
+use constant olson_data_version => "2012a";
 
 =back
 
@@ -135,13 +135,13 @@ use constant olson_canonical_names => { map { ($_ => undef) } qw(
 	America/Boa_Vista America/Bogota America/Boise America/Cambridge_Bay
 	America/Campo_Grande America/Cancun America/Caracas America/Cayenne
 	America/Cayman America/Chicago America/Chihuahua America/Costa_Rica
-	America/Cuiaba America/Curacao America/Danmarkshavn America/Dawson
-	America/Dawson_Creek America/Denver America/Detroit America/Dominica
-	America/Edmonton America/Eirunepe America/El_Salvador America/Fortaleza
-	America/Glace_Bay America/Godthab America/Goose_Bay America/Grand_Turk
-	America/Grenada America/Guadeloupe America/Guatemala America/Guayaquil
-	America/Guyana America/Halifax America/Havana America/Hermosillo
-	America/Indiana/Indianapolis America/Indiana/Knox
+	America/Creston America/Cuiaba America/Curacao America/Danmarkshavn
+	America/Dawson America/Dawson_Creek America/Denver America/Detroit
+	America/Dominica America/Edmonton America/Eirunepe America/El_Salvador
+	America/Fortaleza America/Glace_Bay America/Godthab America/Goose_Bay
+	America/Grand_Turk America/Grenada America/Guadeloupe America/Guatemala
+	America/Guayaquil America/Guyana America/Halifax America/Havana
+	America/Hermosillo America/Indiana/Indianapolis America/Indiana/Knox
 	America/Indiana/Marengo America/Indiana/Petersburg
 	America/Indiana/Tell_City America/Indiana/Vevay
 	America/Indiana/Vincennes America/Indiana/Winamac America/Inuvik
@@ -1205,6 +1205,11 @@ use constant olson_country_selection => {
 				location_coords => "+6344-06828",
 				olson_description => "Eastern Time - east Nunavut - most locations",
 				timezone_name => "America/Iqaluit",
+			},
+			"Mountain Standard Time - Creston, British Columbia" => {
+				location_coords => "+4906-11631",
+				olson_description => "Mountain Standard Time - Creston, British Columbia",
+				timezone_name => "America/Creston",
 			},
 			"Mountain Standard Time - Dawson Creek & Fort Saint John, British Columbia" => {
 				location_coords => "+5946-12014",
@@ -3138,15 +3143,15 @@ use constant olson_country_selection => {
 		alpha2_code => "RU",
 		olson_name => "Russia",
 		regions => {
-			"Moscow - Samara, Udmurtia" => {
-				location_coords => "+5312+05009",
-				olson_description => "Moscow - Samara, Udmurtia",
-				timezone_name => "Europe/Samara",
-			},
 			"Moscow+00 - Caspian Sea" => {
 				location_coords => "+4844+04425",
 				olson_description => "Moscow+00 - Caspian Sea",
 				timezone_name => "Europe/Volgograd",
+			},
+			"Moscow+00 - Samara, Udmurtia" => {
+				location_coords => "+5312+05009",
+				olson_description => "Moscow+00 - Samara, Udmurtia",
+				timezone_name => "Europe/Samara",
 			},
 			"Moscow+00 - west Russia" => {
 				location_coords => "+5545+03735",
@@ -4126,7 +4131,7 @@ developed by Andrew Main (Zefram) <zefram@fysh.org>.
 The Olson timezone database is is the public domain.
 
 The C<Time::OlsonTZ::Data> Perl module wrapper for the database is
-Copyright (C) 2010, 2011 Andrew Main (Zefram) <zefram@fysh.org>.
+Copyright (C) 2010, 2011, 2012 Andrew Main (Zefram) <zefram@fysh.org>.
 
 =head1 LICENSE
 

@@ -1,3 +1,8 @@
+version 0.201201; 2012-03-01
+
+  * Olson database version 2012a (code 2012a, data 2012a): 440 canonical
+    zones, 142 links
+
 version 0.201114; 2011-10-31
 
   * Olson database version 2011n (code 2011i, data 2011n): 439 canonical
