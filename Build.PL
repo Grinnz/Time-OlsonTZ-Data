@@ -37,6 +37,7 @@ my $build = Module::Build->new(
 	sign => 0,
 );
 $build->add_build_element("tz");
+$build->add_build_element("tzp");
 $build->create_build_script;
 
 1;

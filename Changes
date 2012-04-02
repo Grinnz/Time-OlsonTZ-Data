@@ -1,3 +1,18 @@
+version 0.201203; 2012-04-02
+
+  * Olson database version 2012c (code 2012b, data 2012c): 440 canonical
+    zones, 142 links
+
+  * include Olson database source, and prebuild code to generate data
+    files, in distribution
+
+  * load File::Spec and Carp lazily
+
+  * build metadata structures lazily, with country selection data in a
+    separate file
+
+  * add App::olson to "see also" list
+
 version 0.201202; 2012-03-02
 
   * Olson database version 2012b (code 2012b, data 2012b): 440 canonical
