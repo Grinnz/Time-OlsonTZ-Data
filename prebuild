@@ -176,6 +176,7 @@ my %pd_rx = (
 	"" => qr/\A
 		(?:(?:\#\ )?<pre>\n)?
 		(?:(?:\#\ )?\@\(\#\)[^\n]*\n)?
+		(?:[A-Za-z]+\ for\ the\ tz\ distribution\n\n)?
 		(?:\#\ )?This\ file\ is\ in\ the\ public\ domain,
 		\ so\ clarified\ as\ of
 	/x,

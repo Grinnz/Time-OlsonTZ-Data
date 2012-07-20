@@ -1,3 +1,10 @@
+version 0.201204; 2012-07-20
+
+  * Olson database version 2012d (code 2012c, data 2012d): 440 canonical
+    zones, 142 links
+
+  * in prebuild, handle new lead line in Olson README file
+
 version 0.201203; 2012-04-02
 
   * Olson database version 2012c (code 2012b, data 2012c): 440 canonical
