@@ -188,7 +188,7 @@ my %pd_rx = (
 	/xo,
 	".c" => qr!\A\/\*\n\*\*\ $pd_rx!o,
 	".h" => qr!\A(?:\#(?:ifndef|define)\ [^\n]*\n|\n)*\/\*\n\*\*\ $pd_rx!o,
-	".htm" => qr!\A(?>.*?<[Pp]>)\n?$pd_rx!so,
+	".htm" => qr!(?:\A(?>.*?<[Pp]>)|<address>)\n?$pd_rx!so,
 );
 $pd_rx{".html"} = $pd_rx{".htm"};
 $pd_rx{".$_"} = qr/\n\.\\\"\ $pd_rx[^\n]*\n(?:\.\\\"[^\n]*\n)*\z/o

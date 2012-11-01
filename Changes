@@ -1,3 +1,11 @@
+version 0.201208; 2012-11-01
+
+  * Olson database version 2012h (code 2012h, data 2012h): 440 canonical
+    zones, 142 links
+
+  * in prebuild, handle new location for public domain notice in Olson
+    tz-link.htm file
+
 version 0.201207; 2012-10-18
 
   * Olson database version 2012g (code 2012g, data 2012g): 440 canonical
