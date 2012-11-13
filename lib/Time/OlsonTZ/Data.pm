@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201209";
+our $VERSION = "0.201210";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2012i";
+use constant olson_version => "2012j";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2012i";
+use constant olson_code_version => "2012j";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2012i";
+use constant olson_data_version => "2012j";
 
 =back
 
