@@ -1,6 +1,6 @@
 +{
-	code_version => "2012j",
-	data_version => "2012j",
+	code_version => "2013d",
+	data_version => "2013d",
 	files => [
 		"Makefile",
 		"README",
@@ -44,5 +44,5 @@
 		"zic.c",
 		"zone.tab",
 	],
-	version => "2012j",
+	version => "2013d",
 }

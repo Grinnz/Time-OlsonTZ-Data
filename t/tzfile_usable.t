@@ -4,7 +4,7 @@ use strict;
 BEGIN {
 	eval {
 		require DateTime::TimeZone::Tzfile;
-		DateTime::TimeZone::Tzfile->VERSION(0.005);
+		DateTime::TimeZone::Tzfile->VERSION(0.008);
 	};
 	if($@ ne "") {
 		require Test::More;

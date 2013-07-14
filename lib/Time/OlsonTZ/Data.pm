@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201210";
+our $VERSION = "0.201304";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2012j";
+use constant olson_version => "2013d";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2012j";
+use constant olson_code_version => "2013d";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2012j";
+use constant olson_data_version => "2013d";
 
 =back
 
@@ -185,7 +185,7 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	Asia/Dubai Asia/Dushanbe Asia/Gaza Asia/Harbin Asia/Hebron
 	Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd Asia/Irkutsk Asia/Jakarta
 	Asia/Jayapura Asia/Jerusalem Asia/Kabul Asia/Kamchatka Asia/Karachi
-	Asia/Kashgar Asia/Kathmandu Asia/Kolkata Asia/Krasnoyarsk
+	Asia/Kashgar Asia/Kathmandu Asia/Khandyga Asia/Kolkata Asia/Krasnoyarsk
 	Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan
 	Asia/Makassar Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk
 	Asia/Novosibirsk Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak
@@ -193,7 +193,7 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	Asia/Riyadh87 Asia/Riyadh88 Asia/Riyadh89 Asia/Sakhalin Asia/Samarkand
 	Asia/Seoul Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent
 	Asia/Tbilisi Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar
-	Asia/Urumqi Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
+	Asia/Urumqi Asia/Ust-Nera Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
 	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
 	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
 	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/St_Helena
@@ -355,6 +355,7 @@ my $li = q(+{
 	"Etc/Zulu" => "Etc/UTC",
 	"Europe/Belfast" => "Europe/London",
 	"Europe/Bratislava" => "Europe/Prague",
+	"Europe/Busingen" => "Europe/Zurich",
 	"Europe/Guernsey" => "Europe/London",
 	"Europe/Isle_of_Man" => "Europe/London",
 	"Europe/Jersey" => "Europe/London",
@@ -593,7 +594,8 @@ developed by Andrew Main (Zefram) <zefram@fysh.org>.
 The Olson timezone database is is the public domain.
 
 The C<Time::OlsonTZ::Data> Perl module wrapper for the database is
-Copyright (C) 2010, 2011, 2012 Andrew Main (Zefram) <zefram@fysh.org>.
+Copyright (C) 2010, 2011, 2012, 2013
+Andrew Main (Zefram) <zefram@fysh.org>.
 
 =head1 LICENSE
 

@@ -1,3 +1,14 @@
+version 0.201304; 2013-07-14
+
+  * Olson database version 2013d (code 2013d, data 2013d): 442 canonical
+    zones, 143 links
+
+  * in prebuild, handle new arrangement for description above public
+    domain notice in Olson iso3166.tab and zone.tab files
+
+  * in t/tzfile_usable.t, require a version of DateTime::TimeZone::Tzfile
+    that handles POSIX-TZ extension rules with transition times of 24:00
+
 version 0.201210; 2012-11-13
 
   * Olson database version 2012j (code 2012j, data 2012j): 440 canonical

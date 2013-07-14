@@ -251,6 +251,7 @@ lib/Time/OlsonTZ/Data/Asia/Kamchatka.tz
 lib/Time/OlsonTZ/Data/Asia/Karachi.tz
 lib/Time/OlsonTZ/Data/Asia/Kashgar.tz
 lib/Time/OlsonTZ/Data/Asia/Kathmandu.tz
+lib/Time/OlsonTZ/Data/Asia/Khandyga.tz
 lib/Time/OlsonTZ/Data/Asia/Kolkata.tz
 lib/Time/OlsonTZ/Data/Asia/Krasnoyarsk.tz
 lib/Time/OlsonTZ/Data/Asia/Kuala_Lumpur.tz
@@ -289,6 +290,7 @@ lib/Time/OlsonTZ/Data/Asia/Thimphu.tz
 lib/Time/OlsonTZ/Data/Asia/Tokyo.tz
 lib/Time/OlsonTZ/Data/Asia/Ulaanbaatar.tz
 lib/Time/OlsonTZ/Data/Asia/Urumqi.tz
+lib/Time/OlsonTZ/Data/Asia/Ust-Nera.tz
 lib/Time/OlsonTZ/Data/Asia/Vientiane.tz
 lib/Time/OlsonTZ/Data/Asia/Vladivostok.tz
 lib/Time/OlsonTZ/Data/Asia/Yakutsk.tz

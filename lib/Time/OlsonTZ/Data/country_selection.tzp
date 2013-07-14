@@ -115,11 +115,6 @@ use strict;
 				olson_description => "Dumont-d'Urville Station, Terre Adelie",
 				timezone_name => "Antarctica/DumontDUrville",
 			},
-			"Macquarie Island Station, Macquarie Island" => {
-				location_coords => "-5430+15857",
-				olson_description => "Macquarie Island Station, Macquarie Island",
-				timezone_name => "Antarctica/Macquarie",
-			},
 			"Mawson Station, Holme Bay" => {
 				location_coords => "-6736+06253",
 				olson_description => "Mawson Station, Holme Bay",
@@ -248,6 +243,11 @@ use strict;
 				location_coords => "-3133+15905",
 				olson_description => "Lord Howe Island",
 				timezone_name => "Australia/Lord_Howe",
+			},
+			"Macquarie Island" => {
+				location_coords => "-5430+15857",
+				olson_description => "Macquarie Island",
+				timezone_name => "Antarctica/Macquarie",
 			},
 			"New South Wales - Yancowinna" => {
 				location_coords => "-3157+14127",
@@ -484,7 +484,7 @@ use strict;
 	},
 	BQ => {
 		alpha2_code => "BQ",
-		olson_name => "Bonaire Sint Eustatius & Saba",
+		olson_name => "Bonaire, St Eustatius & Saba",
 		regions => {
 			"" => {
 				location_coords => "+120903-0681636",
@@ -1012,9 +1012,14 @@ use strict;
 		alpha2_code => "DE",
 		olson_name => "Germany",
 		regions => {
-			"" => {
+			Busingen => {
+				location_coords => "+4742+00841",
+				olson_description => "Busingen",
+				timezone_name => "Europe/Busingen",
+			},
+			"most locations" => {
 				location_coords => "+5230+01322",
-				olson_description => "",
+				olson_description => "most locations",
 				timezone_name => "Europe/Berlin",
 			},
 		},
@@ -1563,7 +1568,7 @@ use strict;
 		olson_name => "Israel",
 		regions => {
 			"" => {
-				location_coords => "+3146+03514",
+				location_coords => "+314650+0351326",
 				olson_description => "",
 				timezone_name => "Asia/Jerusalem",
 			},
@@ -2715,10 +2720,20 @@ use strict;
 				olson_description => "Moscow+06 - Lena River",
 				timezone_name => "Asia/Yakutsk",
 			},
+			"Moscow+06 - Tomponsky, Ust-Maysky" => {
+				location_coords => "+623923+1353314",
+				olson_description => "Moscow+06 - Tomponsky, Ust-Maysky",
+				timezone_name => "Asia/Khandyga",
+			},
 			"Moscow+07 - Amur River" => {
 				location_coords => "+4310+13156",
 				olson_description => "Moscow+07 - Amur River",
 				timezone_name => "Asia/Vladivostok",
+			},
+			"Moscow+07 - Oymyakonsky" => {
+				location_coords => "+643337+1431336",
+				olson_description => "Moscow+07 - Oymyakonsky",
+				timezone_name => "Asia/Ust-Nera",
 			},
 			"Moscow+07 - Sakhalin Island" => {
 				location_coords => "+4658+14242",
@@ -2958,7 +2973,7 @@ use strict;
 	},
 	SX => {
 		alpha2_code => "SX",
-		olson_name => "Sint Maarten",
+		olson_name => "St Maarten (Dutch part)",
 		regions => {
 			"" => {
 				location_coords => "+180305-0630250",
