@@ -5,7 +5,7 @@ BEGIN {
 	eval { require IO::File; IO::File->VERSION(1.03); };
 	if($@ ne "") {
 		require Test::More;
-		Test::More::plan(skip_all => "no IO::File");
+		Test::More::plan(skip_all => "no usable IO::File");
 	}
 }
 
@@ -23,8 +23,8 @@ foreach(sort keys %{olson_canonical_names()}) {
 		next;
 	}
 	local $/ = \5;
-	unless($h->getline eq "TZif2") {
-		diag "$_: $f is not of version 2";
+	unless($h->getline =~ /\ATZif[2-9]\z/) {
+		diag "$_: $f is not of version 2 or greater";
 		$failures++;
 	}
 }

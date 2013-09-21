@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201304";
+our $VERSION = "0.201305";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2013d";
+use constant olson_version => "2013e";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2013d";
+use constant olson_code_version => "2013e";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2013d";
+use constant olson_data_version => "2013e";
 
 =back
 
@@ -126,32 +126,31 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	Africa/Casablanca Africa/Ceuta Africa/Conakry Africa/Dakar
 	Africa/Dar_es_Salaam Africa/Djibouti Africa/Douala Africa/El_Aaiun
 	Africa/Freetown Africa/Gaborone Africa/Harare Africa/Johannesburg
-	Africa/Juba Africa/Kampala Africa/Khartoum Africa/Kigali Africa/Kinshasa
+	Africa/Kampala Africa/Khartoum Africa/Kigali Africa/Kinshasa
 	Africa/Lagos Africa/Libreville Africa/Lome Africa/Luanda
 	Africa/Lubumbashi Africa/Lusaka Africa/Malabo Africa/Maputo
 	Africa/Maseru Africa/Mbabane Africa/Mogadishu Africa/Monrovia
 	Africa/Nairobi Africa/Ndjamena Africa/Niamey Africa/Nouakchott
 	Africa/Ouagadougou Africa/Porto-Novo Africa/Sao_Tome Africa/Tripoli
 	Africa/Tunis Africa/Windhoek America/Adak America/Anchorage
-	America/Anguilla America/Antigua America/Araguaina
-	America/Argentina/Buenos_Aires America/Argentina/Catamarca
-	America/Argentina/Cordoba America/Argentina/Jujuy
-	America/Argentina/La_Rioja America/Argentina/Mendoza
-	America/Argentina/Rio_Gallegos America/Argentina/Salta
-	America/Argentina/San_Juan America/Argentina/San_Luis
-	America/Argentina/Tucuman America/Argentina/Ushuaia America/Aruba
-	America/Asuncion America/Atikokan America/Bahia America/Bahia_Banderas
-	America/Barbados America/Belem America/Belize America/Blanc-Sablon
-	America/Boa_Vista America/Bogota America/Boise America/Cambridge_Bay
-	America/Campo_Grande America/Cancun America/Caracas America/Cayenne
-	America/Cayman America/Chicago America/Chihuahua America/Costa_Rica
-	America/Creston America/Cuiaba America/Curacao America/Danmarkshavn
-	America/Dawson America/Dawson_Creek America/Denver America/Detroit
-	America/Dominica America/Edmonton America/Eirunepe America/El_Salvador
-	America/Fortaleza America/Glace_Bay America/Godthab America/Goose_Bay
-	America/Grand_Turk America/Grenada America/Guadeloupe America/Guatemala
-	America/Guayaquil America/Guyana America/Halifax America/Havana
-	America/Hermosillo America/Indiana/Indianapolis America/Indiana/Knox
+	America/Antigua America/Araguaina America/Argentina/Buenos_Aires
+	America/Argentina/Catamarca America/Argentina/Cordoba
+	America/Argentina/Jujuy America/Argentina/La_Rioja
+	America/Argentina/Mendoza America/Argentina/Rio_Gallegos
+	America/Argentina/Salta America/Argentina/San_Juan
+	America/Argentina/San_Luis America/Argentina/Tucuman
+	America/Argentina/Ushuaia America/Asuncion America/Atikokan
+	America/Bahia America/Bahia_Banderas America/Barbados America/Belem
+	America/Belize America/Blanc-Sablon America/Boa_Vista America/Bogota
+	America/Boise America/Cambridge_Bay America/Campo_Grande America/Cancun
+	America/Caracas America/Cayenne America/Cayman America/Chicago
+	America/Chihuahua America/Costa_Rica America/Creston America/Cuiaba
+	America/Curacao America/Danmarkshavn America/Dawson America/Dawson_Creek
+	America/Denver America/Detroit America/Edmonton America/Eirunepe
+	America/El_Salvador America/Fortaleza America/Glace_Bay America/Godthab
+	America/Goose_Bay America/Grand_Turk America/Guatemala America/Guayaquil
+	America/Guyana America/Halifax America/Havana America/Hermosillo
+	America/Indiana/Indianapolis America/Indiana/Knox
 	America/Indiana/Marengo America/Indiana/Petersburg
 	America/Indiana/Tell_City America/Indiana/Vevay
 	America/Indiana/Vincennes America/Indiana/Winamac America/Inuvik
@@ -161,8 +160,8 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	America/Manaus America/Martinique America/Matamoros America/Mazatlan
 	America/Menominee America/Merida America/Metlakatla America/Mexico_City
 	America/Miquelon America/Moncton America/Monterrey America/Montevideo
-	America/Montreal America/Montserrat America/Nassau America/New_York
-	America/Nipigon America/Nome America/Noronha America/North_Dakota/Beulah
+	America/Montreal America/Nassau America/New_York America/Nipigon
+	America/Nome America/Noronha America/North_Dakota/Beulah
 	America/North_Dakota/Center America/North_Dakota/New_Salem
 	America/Ojinaga America/Panama America/Pangnirtung America/Paramaribo
 	America/Phoenix America/Port-au-Prince America/Port_of_Spain
@@ -170,64 +169,62 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	America/Rankin_Inlet America/Recife America/Regina America/Resolute
 	America/Rio_Branco America/Santa_Isabel America/Santarem
 	America/Santiago America/Santo_Domingo America/Sao_Paulo
-	America/Scoresbysund America/Sitka America/St_Johns America/St_Kitts
-	America/St_Lucia America/St_Thomas America/St_Vincent
+	America/Scoresbysund America/Sitka America/St_Johns
 	America/Swift_Current America/Tegucigalpa America/Thule
-	America/Thunder_Bay America/Tijuana America/Toronto America/Tortola
-	America/Vancouver America/Whitehorse America/Winnipeg America/Yakutat
-	America/Yellowknife Antarctica/Casey Antarctica/Davis
-	Antarctica/DumontDUrville Antarctica/Macquarie Antarctica/Mawson
-	Antarctica/McMurdo Antarctica/Palmer Antarctica/Rothera Antarctica/Syowa
-	Antarctica/Vostok Asia/Aden Asia/Almaty Asia/Amman Asia/Anadyr
-	Asia/Aqtau Asia/Aqtobe Asia/Ashgabat Asia/Baghdad Asia/Bahrain Asia/Baku
-	Asia/Bangkok Asia/Beirut Asia/Bishkek Asia/Brunei Asia/Choibalsan
-	Asia/Chongqing Asia/Colombo Asia/Damascus Asia/Dhaka Asia/Dili
-	Asia/Dubai Asia/Dushanbe Asia/Gaza Asia/Harbin Asia/Hebron
-	Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd Asia/Irkutsk Asia/Jakarta
-	Asia/Jayapura Asia/Jerusalem Asia/Kabul Asia/Kamchatka Asia/Karachi
-	Asia/Kashgar Asia/Kathmandu Asia/Khandyga Asia/Kolkata Asia/Krasnoyarsk
-	Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan
-	Asia/Makassar Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk
-	Asia/Novosibirsk Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak
-	Asia/Pyongyang Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh
-	Asia/Riyadh87 Asia/Riyadh88 Asia/Riyadh89 Asia/Sakhalin Asia/Samarkand
-	Asia/Seoul Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent
-	Asia/Tbilisi Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar
-	Asia/Urumqi Asia/Ust-Nera Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
-	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
-	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
-	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/St_Helena
-	Atlantic/Stanley Australia/Adelaide Australia/Brisbane
-	Australia/Broken_Hill Australia/Currie Australia/Darwin Australia/Eucla
-	Australia/Hobart Australia/Lindeman Australia/Lord_Howe
-	Australia/Melbourne Australia/Perth Australia/Sydney CET CST6CDT EET EST
-	EST5EDT Etc/GMT Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2
-	Etc/GMT+3 Etc/GMT+4 Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9
-	Etc/GMT-1 Etc/GMT-10 Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14
-	Etc/GMT-2 Etc/GMT-3 Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8
-	Etc/GMT-9 Etc/UCT Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens
-	Europe/Belgrade Europe/Berlin Europe/Brussels Europe/Bucharest
-	Europe/Budapest Europe/Chisinau Europe/Copenhagen Europe/Dublin
-	Europe/Gibraltar Europe/Helsinki Europe/Istanbul Europe/Kaliningrad
-	Europe/Kiev Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid
-	Europe/Malta Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo
-	Europe/Paris Europe/Prague Europe/Riga Europe/Rome Europe/Samara
-	Europe/Simferopol Europe/Sofia Europe/Stockholm Europe/Tallinn
-	Europe/Tirane Europe/Uzhgorod Europe/Vaduz Europe/Vienna Europe/Vilnius
-	Europe/Volgograd Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory
-	HST Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
+	America/Thunder_Bay America/Tijuana America/Toronto America/Vancouver
+	America/Whitehorse America/Winnipeg America/Yakutat America/Yellowknife
+	Antarctica/Casey Antarctica/Davis Antarctica/DumontDUrville
+	Antarctica/Macquarie Antarctica/Mawson Antarctica/Palmer
+	Antarctica/Rothera Antarctica/Syowa Antarctica/Vostok Asia/Aden
+	Asia/Almaty Asia/Amman Asia/Anadyr Asia/Aqtau Asia/Aqtobe Asia/Ashgabat
+	Asia/Baghdad Asia/Bahrain Asia/Baku Asia/Bangkok Asia/Beirut
+	Asia/Bishkek Asia/Brunei Asia/Choibalsan Asia/Chongqing Asia/Colombo
+	Asia/Damascus Asia/Dhaka Asia/Dili Asia/Dubai Asia/Dushanbe Asia/Gaza
+	Asia/Harbin Asia/Hebron Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd
+	Asia/Irkutsk Asia/Jakarta Asia/Jayapura Asia/Jerusalem Asia/Kabul
+	Asia/Kamchatka Asia/Karachi Asia/Kashgar Asia/Kathmandu Asia/Khandyga
+	Asia/Kolkata Asia/Krasnoyarsk Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait
+	Asia/Macau Asia/Magadan Asia/Makassar Asia/Manila Asia/Muscat
+	Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk Asia/Omsk Asia/Oral
+	Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang Asia/Qatar Asia/Qyzylorda
+	Asia/Rangoon Asia/Riyadh Asia/Riyadh87 Asia/Riyadh88 Asia/Riyadh89
+	Asia/Sakhalin Asia/Samarkand Asia/Seoul Asia/Shanghai Asia/Singapore
+	Asia/Taipei Asia/Tashkent Asia/Tbilisi Asia/Tehran Asia/Thimphu
+	Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi Asia/Ust-Nera Asia/Vientiane
+	Asia/Vladivostok Asia/Yakutsk Asia/Yekaterinburg Asia/Yerevan
+	Atlantic/Azores Atlantic/Bermuda Atlantic/Canary Atlantic/Cape_Verde
+	Atlantic/Faroe Atlantic/Madeira Atlantic/Reykjavik
+	Atlantic/South_Georgia Atlantic/St_Helena Atlantic/Stanley
+	Australia/Adelaide Australia/Brisbane Australia/Broken_Hill
+	Australia/Currie Australia/Darwin Australia/Eucla Australia/Hobart
+	Australia/Lindeman Australia/Lord_Howe Australia/Melbourne
+	Australia/Perth Australia/Sydney CET CST6CDT EET EST EST5EDT Etc/GMT
+	Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2 Etc/GMT+3 Etc/GMT+4
+	Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9 Etc/GMT-1 Etc/GMT-10
+	Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14 Etc/GMT-2 Etc/GMT-3
+	Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8 Etc/GMT-9 Etc/UCT
+	Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens Europe/Belgrade
+	Europe/Berlin Europe/Brussels Europe/Bucharest Europe/Budapest
+	Europe/Chisinau Europe/Copenhagen Europe/Dublin Europe/Gibraltar
+	Europe/Helsinki Europe/Istanbul Europe/Kaliningrad Europe/Kiev
+	Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid Europe/Malta
+	Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo Europe/Paris
+	Europe/Prague Europe/Riga Europe/Rome Europe/Samara Europe/Simferopol
+	Europe/Sofia Europe/Stockholm Europe/Tallinn Europe/Tirane
+	Europe/Uzhgorod Europe/Vienna Europe/Vilnius Europe/Volgograd
+	Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory HST
+	Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
 	Indian/Comoro Indian/Kerguelen Indian/Mahe Indian/Maldives
 	Indian/Mauritius Indian/Mayotte Indian/Reunion MET MST MST7MDT PST8PDT
 	Pacific/Apia Pacific/Auckland Pacific/Chatham Pacific/Chuuk
 	Pacific/Easter Pacific/Efate Pacific/Enderbury Pacific/Fakaofo
 	Pacific/Fiji Pacific/Funafuti Pacific/Galapagos Pacific/Gambier
-	Pacific/Guadalcanal Pacific/Guam Pacific/Honolulu Pacific/Johnston
-	Pacific/Kiritimati Pacific/Kosrae Pacific/Kwajalein Pacific/Majuro
-	Pacific/Marquesas Pacific/Midway Pacific/Nauru Pacific/Niue
-	Pacific/Norfolk Pacific/Noumea Pacific/Pago_Pago Pacific/Palau
-	Pacific/Pitcairn Pacific/Pohnpei Pacific/Port_Moresby Pacific/Rarotonga
-	Pacific/Saipan Pacific/Tahiti Pacific/Tarawa Pacific/Tongatapu
-	Pacific/Wake Pacific/Wallis WET
+	Pacific/Guadalcanal Pacific/Guam Pacific/Honolulu Pacific/Kiritimati
+	Pacific/Kosrae Pacific/Kwajalein Pacific/Majuro Pacific/Marquesas
+	Pacific/Midway Pacific/Nauru Pacific/Niue Pacific/Norfolk Pacific/Noumea
+	Pacific/Pago_Pago Pacific/Palau Pacific/Pitcairn Pacific/Pohnpei
+	Pacific/Port_Moresby Pacific/Rarotonga Pacific/Saipan Pacific/Tahiti
+	Pacific/Tarawa Pacific/Tongatapu Pacific/Wake Pacific/Wallis WET
 ) });
 sub olson_canonical_names() {
 	$cn = eval($cn) || die $@ if ref($cn) eq "";
@@ -280,29 +277,42 @@ be found in the L</olson_canonical_names> hash.
 
 my $li = q(+{
 	"Africa/Asmera" => "Africa/Asmara",
+	"Africa/Juba" => "Africa/Khartoum",
 	"Africa/Timbuktu" => "Africa/Bamako",
+	"America/Anguilla" => "America/Port_of_Spain",
 	"America/Argentina/ComodRivadavia" => "America/Argentina/Catamarca",
+	"America/Aruba" => "America/Curacao",
 	"America/Atka" => "America/Adak",
 	"America/Buenos_Aires" => "America/Argentina/Buenos_Aires",
 	"America/Catamarca" => "America/Argentina/Catamarca",
 	"America/Coral_Harbour" => "America/Atikokan",
 	"America/Cordoba" => "America/Argentina/Cordoba",
+	"America/Dominica" => "America/Port_of_Spain",
 	"America/Ensenada" => "America/Tijuana",
 	"America/Fort_Wayne" => "America/Indiana/Indianapolis",
+	"America/Grenada" => "America/Port_of_Spain",
+	"America/Guadeloupe" => "America/Port_of_Spain",
 	"America/Indianapolis" => "America/Indiana/Indianapolis",
 	"America/Jujuy" => "America/Argentina/Jujuy",
 	"America/Knox_IN" => "America/Indiana/Knox",
 	"America/Kralendijk" => "America/Curacao",
 	"America/Louisville" => "America/Kentucky/Louisville",
 	"America/Lower_Princes" => "America/Curacao",
-	"America/Marigot" => "America/Guadeloupe",
+	"America/Marigot" => "America/Port_of_Spain",
 	"America/Mendoza" => "America/Argentina/Mendoza",
+	"America/Montserrat" => "America/Port_of_Spain",
 	"America/Porto_Acre" => "America/Rio_Branco",
 	"America/Rosario" => "America/Argentina/Cordoba",
 	"America/Shiprock" => "America/Denver",
-	"America/St_Barthelemy" => "America/Guadeloupe",
-	"America/Virgin" => "America/St_Thomas",
-	"Antarctica/South_Pole" => "Antarctica/McMurdo",
+	"America/St_Barthelemy" => "America/Port_of_Spain",
+	"America/St_Kitts" => "America/Port_of_Spain",
+	"America/St_Lucia" => "America/Port_of_Spain",
+	"America/St_Thomas" => "America/Port_of_Spain",
+	"America/St_Vincent" => "America/Port_of_Spain",
+	"America/Tortola" => "America/Port_of_Spain",
+	"America/Virgin" => "America/Port_of_Spain",
+	"Antarctica/McMurdo" => "Pacific/Auckland",
+	"Antarctica/South_Pole" => "Pacific/Auckland",
 	"Arctic/Longyearbyen" => "Europe/Oslo",
 	"Asia/Ashkhabad" => "Asia/Ashgabat",
 	"Asia/Calcutta" => "Asia/Kolkata",
@@ -367,6 +377,7 @@ my $li = q(+{
 	"Europe/Sarajevo" => "Europe/Belgrade",
 	"Europe/Skopje" => "Europe/Belgrade",
 	"Europe/Tiraspol" => "Europe/Chisinau",
+	"Europe/Vaduz" => "Europe/Zurich",
 	"Europe/Vatican" => "Europe/Rome",
 	"Europe/Zagreb" => "Europe/Belgrade",
 	GB => "Europe/London",
@@ -394,6 +405,7 @@ my $li = q(+{
 	"NZ-CHAT" => "Pacific/Chatham",
 	Navajo => "America/Denver",
 	PRC => "Asia/Shanghai",
+	"Pacific/Johnston" => "Pacific/Honolulu",
 	"Pacific/Ponape" => "Pacific/Pohnpei",
 	"Pacific/Samoa" => "Pacific/Pago_Pago",
 	"Pacific/Truk" => "Pacific/Chuuk",

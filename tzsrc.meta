@@ -1,6 +1,6 @@
 +{
-	code_version => "2013d",
-	data_version => "2013d",
+	code_version => "2013e",
+	data_version => "2013e",
 	files => [
 		"Makefile",
 		"README",
@@ -17,7 +17,6 @@
 		"factory",
 		"ialloc.c",
 		"iso3166.tab",
-		"leapseconds",
 		"localtime.c",
 		"newctime.3",
 		"newtzset.3",
@@ -44,5 +43,5 @@
 		"zic.c",
 		"zone.tab",
 	],
-	version => "2013d",
+	version => "2013e",
 }

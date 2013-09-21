@@ -4,11 +4,12 @@ use strict;
 BEGIN {
 	eval {
 		require DateTime::TimeZone::Tzfile;
-		DateTime::TimeZone::Tzfile->VERSION(0.008);
+		DateTime::TimeZone::Tzfile->VERSION(0.009);
 	};
 	if($@ ne "") {
 		require Test::More;
-		Test::More::plan(skip_all => "no DateTime::TimeZone::Tzfile");
+		Test::More::plan(skip_all =>
+			"no usable DateTime::TimeZone::Tzfile");
 	}
 }
 

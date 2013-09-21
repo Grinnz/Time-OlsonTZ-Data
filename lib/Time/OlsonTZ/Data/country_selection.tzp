@@ -95,11 +95,6 @@ use strict;
 		alpha2_code => "AQ",
 		olson_name => "Antarctica",
 		regions => {
-			"Amundsen-Scott Station, South Pole" => {
-				location_coords => "-9000+00000",
-				olson_description => "Amundsen-Scott Station, South Pole",
-				timezone_name => "Antarctica/South_Pole",
-			},
 			"Casey Station, Bailey Peninsula" => {
 				location_coords => "-6617+11031",
 				olson_description => "Casey Station, Bailey Peninsula",
@@ -120,9 +115,9 @@ use strict;
 				olson_description => "Mawson Station, Holme Bay",
 				timezone_name => "Antarctica/Mawson",
 			},
-			"McMurdo Station, Ross Island" => {
+			"McMurdo, South Pole, Scott (New Zealand time)" => {
 				location_coords => "-7750+16636",
-				olson_description => "McMurdo Station, Ross Island",
+				olson_description => "McMurdo, South Pole, Scott (New Zealand time)",
 				timezone_name => "Antarctica/McMurdo",
 			},
 			"Palmer Station, Anvers Island" => {
@@ -484,7 +479,7 @@ use strict;
 	},
 	BQ => {
 		alpha2_code => "BQ",
-		olson_name => "Bonaire, St Eustatius & Saba",
+		olson_name => "Caribbean Netherlands",
 		regions => {
 			"" => {
 				location_coords => "+120903-0681636",
@@ -698,25 +693,20 @@ use strict;
 				olson_description => "Eastern Standard Time - Atikokan, Ontario and Southampton I, Nunavut",
 				timezone_name => "America/Atikokan",
 			},
+			"Eastern Time - Ontario & Quebec - most locations" => {
+				location_coords => "+4339-07923",
+				olson_description => "Eastern Time - Ontario & Quebec - most locations",
+				timezone_name => "America/Toronto",
+			},
 			"Eastern Time - Ontario & Quebec - places that did not observe DST 1967-1973" => {
 				location_coords => "+4901-08816",
 				olson_description => "Eastern Time - Ontario & Quebec - places that did not observe DST 1967-1973",
 				timezone_name => "America/Nipigon",
 			},
-			"Eastern Time - Ontario - most locations" => {
-				location_coords => "+4339-07923",
-				olson_description => "Eastern Time - Ontario - most locations",
-				timezone_name => "America/Toronto",
-			},
 			"Eastern Time - Pangnirtung, Nunavut" => {
 				location_coords => "+6608-06544",
 				olson_description => "Eastern Time - Pangnirtung, Nunavut",
 				timezone_name => "America/Pangnirtung",
-			},
-			"Eastern Time - Quebec - most locations" => {
-				location_coords => "+4531-07334",
-				olson_description => "Eastern Time - Quebec - most locations",
-				timezone_name => "America/Montreal",
 			},
 			"Eastern Time - Thunder Bay, Ontario" => {
 				location_coords => "+4823-08915",
@@ -1667,7 +1657,7 @@ use strict;
 		olson_name => "Jamaica",
 		regions => {
 			"" => {
-				location_coords => "+1800-07648",
+				location_coords => "+175805-0764736",
 				olson_description => "",
 				timezone_name => "America/Jamaica",
 			},
@@ -3367,20 +3357,15 @@ use strict;
 				olson_description => "Metlakatla Time - Annette Island",
 				timezone_name => "America/Metlakatla",
 			},
-			"Mountain Standard Time - Arizona" => {
+			"Mountain Standard Time - Arizona (except Navajo)" => {
 				location_coords => "+332654-1120424",
-				olson_description => "Mountain Standard Time - Arizona",
+				olson_description => "Mountain Standard Time - Arizona (except Navajo)",
 				timezone_name => "America/Phoenix",
 			},
 			"Mountain Time" => {
 				location_coords => "+394421-1045903",
 				olson_description => "Mountain Time",
 				timezone_name => "America/Denver",
-			},
-			"Mountain Time - Navajo" => {
-				location_coords => "+364708-1084111",
-				olson_description => "Mountain Time - Navajo",
-				timezone_name => "America/Shiprock",
 			},
 			"Mountain Time - south Idaho & east Oregon" => {
 				location_coords => "+433649-1161209",

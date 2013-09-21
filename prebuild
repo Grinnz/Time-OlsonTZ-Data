@@ -171,7 +171,7 @@ sub action_bare(@) {
 	clean_dir("$target_dir/tzsrc");
 }
 
-my $pd_rx = qr/This file is in the public domain, so clarified as of\b/;
+my $pd_rx = qr/This file is in the public domain(?:\.|, so clarified as of\b)/;
 my %pd_rx = (
 	"" => qr/\A
 		(?:(?:\#\ )?<pre>\n)?
@@ -191,6 +191,12 @@ my %pd_rx = (
 		(?:(?:\#\ |:\ ')\@\(\#\)[^\n]*\n)?
 		(?:\#\ |:\ ')$pd_rx
 	/xo,
+	".awk" => qr/\A
+		(?:\#\![^\n]*\n+)?
+		\n?
+		(?:\#[^\n]*\n\n?)?
+		\#\ $pd_rx
+	/xo,
 	".c" => qr!\A\/\*\n\*\*\ $pd_rx!o,
 	".h" => qr!\A(?:\#(?:ifndef|define)\ [^\n]*\n|\n)*\/\*\n\*\*\ $pd_rx!o,
 	".htm" => qr!(?:\A(?>.*?<[Pp]>)|<address>)\n?$pd_rx!so,
@@ -199,13 +205,30 @@ $pd_rx{".html"} = $pd_rx{".htm"};
 $pd_rx{".$_"} = qr/\n\.\\\"\ $pd_rx[^\n]*\n(?:\.\\\"[^\n]*\n)*\z/o
 	foreach 1..8;
 
-sub action_download_olson(@) {
-	die "bad arguments\n" unless @_ == 1;
-	my($ver) = @_;
+sub action_get_olson(@) {
+	die "bad arguments\n" unless @_ >= 1;
+	my $acquire;
+	if($_[0] eq "download") {
+		die "bad arguments\n" unless @_ == 2;
+		my(undef, $ver) = @_;
+		$acquire = sub {
+			Time::OlsonTZ::Download->new(
+				$ver eq "latest" ? () : ($ver))
+		};
+	} elsif($_[0] eq "local") {
+		die "bad arguments\n" unless @_ == 3;
+		my(undef, $dir, $ver) = @_;
+		$acquire = sub {
+			Time::OlsonTZ::Download->new_from_local_source(
+				source_dir => $dir, version => $ver)
+		};
+	} else {
+		die "bad arguments\n";
+	}
 	if((-e "$target_dir/tzsrc") || (-e "$target_dir/tzsrc.meta")) {
 		die "won't replace existing Olson source\n";
 	}
-	my $dl = Time::OlsonTZ::Download->new($ver eq "latest" ? () : ($ver));
+	my $dl = $acquire->();
 	my $dldir = $dl->unpacked_dir;
 	my $tdir = "$target_dir/tzsrc.new$$";
 	clean_dir($tdir);
@@ -237,7 +260,9 @@ sub action_download_olson(@) {
 				return;
 			}
 			if(m#(?:
-				/checktab\.awk|/tzselect\.ksh|/zoneinfo2tdf\.pl
+				/(?:checktab|leapseconds)\.awk
+				|/leap-seconds\.list
+				|/tzselect\.ksh|/zoneinfo2tdf\.pl
 				|\.[1-8]\.txt|/usno[0-9]{4}[a-z]?
 			)\z#x) {
 				# Is PD but not explicitly labelled
@@ -334,7 +359,15 @@ sub tzfile_name($) {
 }
 
 sub action_build_data(@) {
-	die "bad arguments\n" if @_;
+	die "bad arguments\n" if @_ > 1;
+	my($type) = @_;
+	my %type;
+	if(defined $type) {
+		die "bad arguments\n" unless $type =~ /\A(?:tzfiles|meta)\z/;
+		$type{$type} = undef;
+	} else {
+		$type{$_} = undef foreach qw(tzfiles meta);
+	}
 	action_unbuild_data();
 	my $tzsrc_meta = do {
 		$@ = "";
@@ -347,16 +380,20 @@ sub action_build_data(@) {
 		data_version => $tzsrc_meta->{data_version},
 		source_dir => "$target_dir/tzsrc",
 	);
-	expand_template($dl, "lib/Time/OlsonTZ/Data.pm");
-	generate_country_selection($dl);
-	expand_manifest([
-		(map { "tzsrc/$_" } @{$tzsrc_meta->{files}}),
-		(map { tzfile_name($_) } keys %{$dl->canonical_names}),
-	]);
-	my $dl_tzfile_dir = $dl->zoneinfo_dir;
-	foreach(keys %{$dl->canonical_names}) {
-		write_target_file(tzfile_name($_),
-			read_file("$dl_tzfile_dir/$_"));
+	if(exists $type{meta}) {
+		expand_template($dl, "lib/Time/OlsonTZ/Data.pm");
+		generate_country_selection($dl);
+		expand_manifest([
+			(map { "tzsrc/$_" } @{$tzsrc_meta->{files}}),
+			(map { tzfile_name($_) } keys %{$dl->canonical_names}),
+		]);
+	}
+	if(exists $type{tzfiles}) {
+		my $dl_tzfile_dir = $dl->zoneinfo_dir;
+		foreach(keys %{$dl->canonical_names}) {
+			write_target_file(tzfile_name($_),
+				read_file("$dl_tzfile_dir/$_"));
+		}
 	}
 }
 
@@ -380,7 +417,7 @@ prebuild - custom build process for Time::OlsonTZ::Data
 
 	./prebuild status
 
-	./prebuild download_olson latest
+	./prebuild get_olson download latest
 	./prebuild build_data
 
 	./prebuild unbuild_data
@@ -432,9 +469,9 @@ This is the main form of the directory that should be used by someone
 who edits the Olson source as well as wanting the CPAN wrapper.
 A version-control repository could sensibly track this, for such a user.
 However, if you maintain a non-standard version of the Olson database
-outside the context of this wrapper, and want to apply this wrapper to
-it, it's better to work from the bare wrapper source and use a custom
-mechanism to incorporate the Olson source.
+outside the context of this wrapper, and want to apply this wrapper to it,
+it's better to work from the bare wrapper source and use the B<get_olson
+local> mechanism to incorporate the Olson source.
 
 =item data built
 
@@ -482,15 +519,24 @@ of the five states listed above.  If some build products exist from
 later in the process, but not enough to reach the next major state,
 the specific additional items are listed.
 
-=item B<download_olson> I<version>
+=item B<get_olson> B<download> I<version>
 
-Download Olson database source from an appropriate distribution
-site, placing (most of) it in a C<tzsrc> subdirectory and creating a
-C<tzsrc.meta> file to describe it.  This will not replace an existing
-C<tzsrc> directory; use the B<bare> action first if you want to throw
-away existing source.  The I<version> argument may be an Olson database
-version number such as "C<2012b>", to download that specific version,
-or "B<latest>" to get the current version.
+=item B<get_olson> B<local> I<directory> I<version>
+
+Acquire Olson database source, placing (most of) it in a C<tzsrc>
+subdirectory and creating a C<tzsrc.meta> file to describe it.  This will
+not replace an existing C<tzsrc> directory; use the B<bare> action first
+if you want to throw away existing source.
+
+In the B<download> form, the database will be downloaded from an
+appropriate distribution site.  The I<version> argument may be an Olson
+database version number such as "C<2012b>", to download that specific
+version, or "B<latest>" to get the current version.
+
+In the B<local> form, the database will be copied from a local
+I<directory> where it's already been unwrapped.  The I<version> argument
+must be an Olson database version number such as "C<2012b>", specifying
+which version is in the I<directory>.
 
 This action ensures that only public-domain matter goes into the C<tzsrc>
 subdirectory.  The downloaded source is checked for the expected markers
@@ -513,6 +559,14 @@ to handle the new situation.
 Build a full set of tzfiles and put metadata into Perl form.  This
 requires Olson source to be available in the C<tzsrc> subdirectory.
 It will replace any existing tzfiles and metadata files.
+
+=item B<build_data> B<tzfiles>
+
+=item B<build_data> B<metadata>
+
+Build a subset of the data files.  This requires Olson source to be
+available in the C<tzsrc> subdirectory.  It will replace any existing
+tzfiles and metadata files.
 
 =item B<unbuild_data>
 
