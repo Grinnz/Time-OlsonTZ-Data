@@ -1,3 +1,10 @@
+version 0.201306; 2013-09-25
+
+  * Olson database version 2013f (code 2013f, data 2013f): 427 canonical
+    zones, 158 links
+
+  * in prebuild, skip copying of the new NEWS file, which is not required
+
 version 0.201305; 2013-09-21
 
   * Olson database version 2013e (code 2013e, data 2013e): 427 canonical

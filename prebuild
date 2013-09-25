@@ -264,6 +264,7 @@ sub action_get_olson(@) {
 				|/leap-seconds\.list
 				|/tzselect\.ksh|/zoneinfo2tdf\.pl
 				|\.[1-8]\.txt|/usno[0-9]{4}[a-z]?
+				|NEWS
 			)\z#x) {
 				# Is PD but not explicitly labelled
 				# as such.  Don't need these files,
