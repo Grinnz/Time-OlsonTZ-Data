@@ -171,40 +171,6 @@ sub action_bare(@) {
 	clean_dir("$target_dir/tzsrc");
 }
 
-my $pd_rx = qr/This file is in the public domain(?:\.|, so clarified as of\b)/;
-my %pd_rx = (
-	"" => qr/\A
-		(?:(?:\#\ )?<pre>\n)?
-		(?:(?:\#\ )?\@\(\#\)[^\n]*\n)?
-		(?:(?:\#\ )?(?:
-			[A-Za-z]+\ for\ the\ tz\ distribution
-			|ISO\ 3166\ alpha-2\ country\ codes
-			|TZ\ zone\ descriptions
-		)\n\#?\n)?
-		(?:\#?\n)?
-		(?:\#\ )?This\ file\ is\ in\ the\ public\ domain,
-		\ so\ clarified\ as\ of
-	/x,
-	".sh" => qr/\A
-		\#\![^\n]*\n+
-		(?:(?:\#\ |:\ ')<pre>'?\n)?
-		(?:(?:\#\ |:\ ')\@\(\#\)[^\n]*\n)?
-		(?:\#\ |:\ ')$pd_rx
-	/xo,
-	".awk" => qr/\A
-		(?:\#\![^\n]*\n+)?
-		\n?
-		(?:\#[^\n]*\n\n?)?
-		\#\ $pd_rx
-	/xo,
-	".c" => qr!\A\/\*\n\*\*\ $pd_rx!o,
-	".h" => qr!\A(?:\#(?:ifndef|define)\ [^\n]*\n|\n)*\/\*\n\*\*\ $pd_rx!o,
-	".htm" => qr!(?:\A(?>.*?<[Pp]>)|<address>)\n?$pd_rx!so,
-);
-$pd_rx{".html"} = $pd_rx{".htm"};
-$pd_rx{".$_"} = qr/\n\.\\\"\ $pd_rx[^\n]*\n(?:\.\\\"[^\n]*\n)*\z/o
-	foreach 1..8;
-
 sub action_get_olson(@) {
 	die "bad arguments\n" unless @_ >= 1;
 	my $acquire;
@@ -239,6 +205,13 @@ sub action_get_olson(@) {
 	};
 	mkpath($tdir);
 	my @files;
+	read_file("$dldir/README") =~ /
+		\n\n
+		Unless[ \n]otherwise[ \n]specified,[ \n]all[ \n]files[ \n]
+		in[ \n]the[ \n]tz[ \n]code[ \n]and[ \n]data[ \n]are[ \n]in[ \n]
+		the[ \n]public[ \n]domain,[ \n]so[ \n]clarified[ \n]as[ \n]
+		of[ \n]2009-05-17[ \n]by[ \n]Arthur[ \n]David[ \n]Olson\.
+	/x or die "could not confirm general PD status\n";
 	find({
 		no_chdir => 1,
 		wanted => sub {
@@ -251,31 +224,19 @@ sub action_get_olson(@) {
 				# Is download tarball; not a source file.
 				return;
 			}
-			if(m#
-				/(?:date|(?:new)?strftime)
-				\.(?:c|[1-8](?:\.txt)?)
-			\z#x) {
-				# Is under BSD license rather than PD,
-				# so skip.  (Don't need these files.)
+			my $bname;
+			if($lname =~ /\A(.+\.[1-8])\.txt\z/ &&
+					-f $dldir."/".($bname = $1) &&
+					read_file("$dldir/$bname") =~
+						/copyright \(c\)/i) {
+				# Is rendering of man page that's under
+				# copyright.
 				return;
 			}
-			if(m#(?:
-				/(?:checktab|leapseconds)\.awk
-				|/leap-seconds\.list
-				|/tzselect\.ksh|/zoneinfo2tdf\.pl
-				|\.[1-8]\.txt|/usno[0-9]{4}[a-z]?
-				|NEWS
-			)\z#x) {
-				# Is PD but not explicitly labelled
-				# as such.  Don't need these files,
-				# so skip.
-				return;
-			}
-			my($ext) = m#(\.[0-9a-z]+)\z#;
-			$ext = "" unless defined($ext) && exists($pd_rx{$ext});
 			my $content = read_file($_);
-			unless($content =~ $pd_rx{$ext}) {
-				die "could not confirm PD status of $lname\n";
+			if($content =~ /copyright \(c\)/i) {
+				# Is under copyright.
+				return;
 			}
 			write_file("$tdir/$lname", $content);
 			push @files, $lname;

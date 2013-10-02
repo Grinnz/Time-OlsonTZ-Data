@@ -1,3 +1,12 @@
+version 0.201307; 2013-10-02
+
+  * Olson database version 2013g (code 2013g, data 2013g): 427 canonical
+    zones, 158 links
+
+  * in prebuild, work with new PD-unless-otherwise-stated notice in the
+    Olson README file, and copy all files from the Olson distribution
+    that are not marked as copyrighted
+
 version 0.201306; 2013-09-25
 
   * Olson database version 2013f (code 2013f, data 2013f): 427 canonical
