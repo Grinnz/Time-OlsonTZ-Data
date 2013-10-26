@@ -1,6 +1,6 @@
 +{
-	code_version => "2013g",
-	data_version => "2013g",
+	code_version => "2013h",
+	data_version => "2013h",
 	files => [
 		"Makefile",
 		"NEWS",
@@ -65,5 +65,5 @@
 		"zone.tab",
 		"zoneinfo2tdf.pl",
 	],
-	version => "2013g",
+	version => "2013h",
 }
