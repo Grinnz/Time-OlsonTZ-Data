@@ -261,9 +261,6 @@ lib/Time/OlsonTZ/Data/Asia/Qatar.tz
 lib/Time/OlsonTZ/Data/Asia/Qyzylorda.tz
 lib/Time/OlsonTZ/Data/Asia/Rangoon.tz
 lib/Time/OlsonTZ/Data/Asia/Riyadh.tz
-lib/Time/OlsonTZ/Data/Asia/Riyadh87.tz
-lib/Time/OlsonTZ/Data/Asia/Riyadh88.tz
-lib/Time/OlsonTZ/Data/Asia/Riyadh89.tz
 lib/Time/OlsonTZ/Data/Asia/Sakhalin.tz
 lib/Time/OlsonTZ/Data/Asia/Samarkand.tz
 lib/Time/OlsonTZ/Data/Asia/Seoul.tz
@@ -481,9 +478,6 @@ tzsrc/northamerica
 tzsrc/pacificnew
 tzsrc/private.h
 tzsrc/scheck.c
-tzsrc/solar87
-tzsrc/solar88
-tzsrc/solar89
 tzsrc/southamerica
 tzsrc/systemv
 tzsrc/time2posix.3

@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201308";
+our $VERSION = "0.201309";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2013h";
+use constant olson_version => "2013i";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2013h";
+use constant olson_code_version => "2013i";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2013h";
+use constant olson_data_version => "2013i";
 
 =back
 
@@ -187,33 +187,32 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	Asia/Macau Asia/Magadan Asia/Makassar Asia/Manila Asia/Muscat
 	Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk Asia/Omsk Asia/Oral
 	Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang Asia/Qatar Asia/Qyzylorda
-	Asia/Rangoon Asia/Riyadh Asia/Riyadh87 Asia/Riyadh88 Asia/Riyadh89
-	Asia/Sakhalin Asia/Samarkand Asia/Seoul Asia/Shanghai Asia/Singapore
-	Asia/Taipei Asia/Tashkent Asia/Tbilisi Asia/Tehran Asia/Thimphu
-	Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi Asia/Ust-Nera Asia/Vientiane
-	Asia/Vladivostok Asia/Yakutsk Asia/Yekaterinburg Asia/Yerevan
-	Atlantic/Azores Atlantic/Bermuda Atlantic/Canary Atlantic/Cape_Verde
-	Atlantic/Faroe Atlantic/Madeira Atlantic/Reykjavik
-	Atlantic/South_Georgia Atlantic/St_Helena Atlantic/Stanley
-	Australia/Adelaide Australia/Brisbane Australia/Broken_Hill
-	Australia/Currie Australia/Darwin Australia/Eucla Australia/Hobart
-	Australia/Lindeman Australia/Lord_Howe Australia/Melbourne
-	Australia/Perth Australia/Sydney CET CST6CDT EET EST EST5EDT Etc/GMT
-	Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2 Etc/GMT+3 Etc/GMT+4
-	Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9 Etc/GMT-1 Etc/GMT-10
-	Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14 Etc/GMT-2 Etc/GMT-3
-	Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8 Etc/GMT-9 Etc/UCT
-	Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens Europe/Belgrade
-	Europe/Berlin Europe/Brussels Europe/Bucharest Europe/Budapest
-	Europe/Chisinau Europe/Copenhagen Europe/Dublin Europe/Gibraltar
-	Europe/Helsinki Europe/Istanbul Europe/Kaliningrad Europe/Kiev
-	Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid Europe/Malta
-	Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo Europe/Paris
-	Europe/Prague Europe/Riga Europe/Rome Europe/Samara Europe/Simferopol
-	Europe/Sofia Europe/Stockholm Europe/Tallinn Europe/Tirane
-	Europe/Uzhgorod Europe/Vienna Europe/Vilnius Europe/Volgograd
-	Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory HST
-	Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
+	Asia/Rangoon Asia/Riyadh Asia/Sakhalin Asia/Samarkand Asia/Seoul
+	Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent Asia/Tbilisi
+	Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi
+	Asia/Ust-Nera Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
+	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
+	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
+	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/St_Helena
+	Atlantic/Stanley Australia/Adelaide Australia/Brisbane
+	Australia/Broken_Hill Australia/Currie Australia/Darwin Australia/Eucla
+	Australia/Hobart Australia/Lindeman Australia/Lord_Howe
+	Australia/Melbourne Australia/Perth Australia/Sydney CET CST6CDT EET EST
+	EST5EDT Etc/GMT Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2
+	Etc/GMT+3 Etc/GMT+4 Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9
+	Etc/GMT-1 Etc/GMT-10 Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14
+	Etc/GMT-2 Etc/GMT-3 Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8
+	Etc/GMT-9 Etc/UCT Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens
+	Europe/Belgrade Europe/Berlin Europe/Brussels Europe/Bucharest
+	Europe/Budapest Europe/Chisinau Europe/Copenhagen Europe/Dublin
+	Europe/Gibraltar Europe/Helsinki Europe/Istanbul Europe/Kaliningrad
+	Europe/Kiev Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid
+	Europe/Malta Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo
+	Europe/Paris Europe/Prague Europe/Riga Europe/Rome Europe/Samara
+	Europe/Simferopol Europe/Sofia Europe/Stockholm Europe/Tallinn
+	Europe/Tirane Europe/Uzhgorod Europe/Vienna Europe/Vilnius
+	Europe/Volgograd Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory
+	HST Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
 	Indian/Comoro Indian/Kerguelen Indian/Mahe Indian/Maldives
 	Indian/Mauritius Indian/Mayotte Indian/Reunion MET MST MST7MDT PST8PDT
 	Pacific/Apia Pacific/Auckland Pacific/Chatham Pacific/Chuuk
@@ -398,9 +397,6 @@ my $li = q(+{
 	"Mexico/BajaNorte" => "America/Tijuana",
 	"Mexico/BajaSur" => "America/Mazatlan",
 	"Mexico/General" => "America/Mexico_City",
-	"Mideast/Riyadh87" => "Asia/Riyadh87",
-	"Mideast/Riyadh88" => "Asia/Riyadh88",
-	"Mideast/Riyadh89" => "Asia/Riyadh89",
 	NZ => "Pacific/Auckland",
 	"NZ-CHAT" => "Pacific/Chatham",
 	Navajo => "America/Denver",

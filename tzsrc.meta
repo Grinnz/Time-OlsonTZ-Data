@@ -1,6 +1,6 @@
 +{
-	code_version => "2013h",
-	data_version => "2013h",
+	code_version => "2013i",
+	data_version => "2013i",
 	files => [
 		"Makefile",
 		"NEWS",
@@ -33,9 +33,6 @@
 		"pacificnew",
 		"private.h",
 		"scheck.c",
-		"solar87",
-		"solar88",
-		"solar89",
 		"southamerica",
 		"systemv",
 		"time2posix.3",
@@ -65,5 +62,5 @@
 		"zone.tab",
 		"zoneinfo2tdf.pl",
 	],
-	version => "2013h",
+	version => "2013i",
 }
