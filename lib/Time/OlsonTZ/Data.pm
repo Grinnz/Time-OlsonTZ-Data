@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201401";
+our $VERSION = "0.201402";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2014a";
+use constant olson_version => "2014b";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2014a";
+use constant olson_code_version => "2014b";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2014a";
+use constant olson_data_version => "2014b";
 
 =back
 
@@ -175,44 +175,45 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	America/Whitehorse America/Winnipeg America/Yakutat America/Yellowknife
 	Antarctica/Casey Antarctica/Davis Antarctica/DumontDUrville
 	Antarctica/Macquarie Antarctica/Mawson Antarctica/Palmer
-	Antarctica/Rothera Antarctica/Syowa Antarctica/Vostok Asia/Aden
-	Asia/Almaty Asia/Amman Asia/Anadyr Asia/Aqtau Asia/Aqtobe Asia/Ashgabat
-	Asia/Baghdad Asia/Bahrain Asia/Baku Asia/Bangkok Asia/Beirut
-	Asia/Bishkek Asia/Brunei Asia/Choibalsan Asia/Chongqing Asia/Colombo
-	Asia/Damascus Asia/Dhaka Asia/Dili Asia/Dubai Asia/Dushanbe Asia/Gaza
-	Asia/Harbin Asia/Hebron Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd
-	Asia/Irkutsk Asia/Jakarta Asia/Jayapura Asia/Jerusalem Asia/Kabul
-	Asia/Kamchatka Asia/Karachi Asia/Kashgar Asia/Kathmandu Asia/Khandyga
-	Asia/Kolkata Asia/Krasnoyarsk Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait
-	Asia/Macau Asia/Magadan Asia/Makassar Asia/Manila Asia/Muscat
-	Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk Asia/Omsk Asia/Oral
-	Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang Asia/Qatar Asia/Qyzylorda
-	Asia/Rangoon Asia/Riyadh Asia/Sakhalin Asia/Samarkand Asia/Seoul
-	Asia/Shanghai Asia/Singapore Asia/Taipei Asia/Tashkent Asia/Tbilisi
-	Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi
-	Asia/Ust-Nera Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
-	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
-	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
-	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/St_Helena
-	Atlantic/Stanley Australia/Adelaide Australia/Brisbane
-	Australia/Broken_Hill Australia/Currie Australia/Darwin Australia/Eucla
-	Australia/Hobart Australia/Lindeman Australia/Lord_Howe
-	Australia/Melbourne Australia/Perth Australia/Sydney CET CST6CDT EET EST
-	EST5EDT Etc/GMT Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2
-	Etc/GMT+3 Etc/GMT+4 Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9
-	Etc/GMT-1 Etc/GMT-10 Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14
-	Etc/GMT-2 Etc/GMT-3 Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8
-	Etc/GMT-9 Etc/UCT Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens
-	Europe/Belgrade Europe/Berlin Europe/Brussels Europe/Bucharest
-	Europe/Budapest Europe/Chisinau Europe/Copenhagen Europe/Dublin
-	Europe/Gibraltar Europe/Helsinki Europe/Istanbul Europe/Kaliningrad
-	Europe/Kiev Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid
-	Europe/Malta Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo
-	Europe/Paris Europe/Prague Europe/Riga Europe/Rome Europe/Samara
-	Europe/Simferopol Europe/Sofia Europe/Stockholm Europe/Tallinn
-	Europe/Tirane Europe/Uzhgorod Europe/Vienna Europe/Vilnius
-	Europe/Volgograd Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory
-	HST Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
+	Antarctica/Rothera Antarctica/Syowa Antarctica/Troll Antarctica/Vostok
+	Asia/Aden Asia/Almaty Asia/Amman Asia/Anadyr Asia/Aqtau Asia/Aqtobe
+	Asia/Ashgabat Asia/Baghdad Asia/Bahrain Asia/Baku Asia/Bangkok
+	Asia/Beirut Asia/Bishkek Asia/Brunei Asia/Choibalsan Asia/Chongqing
+	Asia/Colombo Asia/Damascus Asia/Dhaka Asia/Dili Asia/Dubai Asia/Dushanbe
+	Asia/Gaza Asia/Harbin Asia/Hebron Asia/Ho_Chi_Minh Asia/Hong_Kong
+	Asia/Hovd Asia/Irkutsk Asia/Jakarta Asia/Jayapura Asia/Jerusalem
+	Asia/Kabul Asia/Kamchatka Asia/Karachi Asia/Kashgar Asia/Kathmandu
+	Asia/Khandyga Asia/Kolkata Asia/Krasnoyarsk Asia/Kuala_Lumpur
+	Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan Asia/Makassar
+	Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk
+	Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang
+	Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh Asia/Sakhalin
+	Asia/Samarkand Asia/Seoul Asia/Shanghai Asia/Singapore Asia/Taipei
+	Asia/Tashkent Asia/Tbilisi Asia/Tehran Asia/Thimphu Asia/Tokyo
+	Asia/Ulaanbaatar Asia/Urumqi Asia/Ust-Nera Asia/Vientiane
+	Asia/Vladivostok Asia/Yakutsk Asia/Yekaterinburg Asia/Yerevan
+	Atlantic/Azores Atlantic/Bermuda Atlantic/Canary Atlantic/Cape_Verde
+	Atlantic/Faroe Atlantic/Madeira Atlantic/Reykjavik
+	Atlantic/South_Georgia Atlantic/St_Helena Atlantic/Stanley
+	Australia/Adelaide Australia/Brisbane Australia/Broken_Hill
+	Australia/Currie Australia/Darwin Australia/Eucla Australia/Hobart
+	Australia/Lindeman Australia/Lord_Howe Australia/Melbourne
+	Australia/Perth Australia/Sydney CET CST6CDT EET EST EST5EDT Etc/GMT
+	Etc/GMT+1 Etc/GMT+10 Etc/GMT+11 Etc/GMT+12 Etc/GMT+2 Etc/GMT+3 Etc/GMT+4
+	Etc/GMT+5 Etc/GMT+6 Etc/GMT+7 Etc/GMT+8 Etc/GMT+9 Etc/GMT-1 Etc/GMT-10
+	Etc/GMT-11 Etc/GMT-12 Etc/GMT-13 Etc/GMT-14 Etc/GMT-2 Etc/GMT-3
+	Etc/GMT-4 Etc/GMT-5 Etc/GMT-6 Etc/GMT-7 Etc/GMT-8 Etc/GMT-9 Etc/UCT
+	Etc/UTC Europe/Amsterdam Europe/Andorra Europe/Athens Europe/Belgrade
+	Europe/Berlin Europe/Brussels Europe/Bucharest Europe/Budapest
+	Europe/Chisinau Europe/Copenhagen Europe/Dublin Europe/Gibraltar
+	Europe/Helsinki Europe/Istanbul Europe/Kaliningrad Europe/Kiev
+	Europe/Lisbon Europe/London Europe/Luxembourg Europe/Madrid Europe/Malta
+	Europe/Minsk Europe/Monaco Europe/Moscow Europe/Oslo Europe/Paris
+	Europe/Prague Europe/Riga Europe/Rome Europe/Samara Europe/Simferopol
+	Europe/Sofia Europe/Stockholm Europe/Tallinn Europe/Tirane
+	Europe/Uzhgorod Europe/Vienna Europe/Vilnius Europe/Volgograd
+	Europe/Warsaw Europe/Zaporozhye Europe/Zurich Factory HST
+	Indian/Antananarivo Indian/Chagos Indian/Christmas Indian/Cocos
 	Indian/Comoro Indian/Kerguelen Indian/Mahe Indian/Maldives
 	Indian/Mauritius Indian/Mayotte Indian/Reunion MET MST MST7MDT PST8PDT
 	Pacific/Apia Pacific/Auckland Pacific/Chatham Pacific/Chuuk

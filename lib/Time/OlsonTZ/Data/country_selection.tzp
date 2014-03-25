@@ -135,6 +135,11 @@ use strict;
 				olson_description => "Syowa Station, E Ongul I",
 				timezone_name => "Antarctica/Syowa",
 			},
+			"Troll Station, Queen Maud Land" => {
+				location_coords => "-720041+0023206",
+				olson_description => "Troll Station, Queen Maud Land",
+				timezone_name => "Antarctica/Troll",
+			},
 			"Vostok Station, Lake Vostok" => {
 				location_coords => "-7824+10654",
 				olson_description => "Vostok Station, Lake Vostok",
@@ -2665,6 +2670,11 @@ use strict;
 				olson_description => "Moscow+00 - Caspian Sea",
 				timezone_name => "Europe/Volgograd",
 			},
+			"Moscow+00 - Crimea" => {
+				location_coords => "+4457+03406",
+				olson_description => "Moscow+00 - Crimea",
+				timezone_name => "Europe/Simferopol",
+			},
 			"Moscow+00 - Samara, Udmurtia" => {
 				location_coords => "+5312+05009",
 				olson_description => "Moscow+00 - Samara, Udmurtia",
@@ -3183,11 +3193,6 @@ use strict;
 				location_coords => "+4750+03510",
 				olson_description => "Zaporozh'ye, E Lugansk / Zaporizhia, E Luhansk",
 				timezone_name => "Europe/Zaporozhye",
-			},
-			"central Crimea" => {
-				location_coords => "+4457+03406",
-				olson_description => "central Crimea",
-				timezone_name => "Europe/Simferopol",
 			},
 			"most locations" => {
 				location_coords => "+5026+03031",

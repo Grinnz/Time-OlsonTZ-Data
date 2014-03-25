@@ -200,6 +200,7 @@ lib/Time/OlsonTZ/Data/Antarctica/Mawson.tz
 lib/Time/OlsonTZ/Data/Antarctica/Palmer.tz
 lib/Time/OlsonTZ/Data/Antarctica/Rothera.tz
 lib/Time/OlsonTZ/Data/Antarctica/Syowa.tz
+lib/Time/OlsonTZ/Data/Antarctica/Troll.tz
 lib/Time/OlsonTZ/Data/Antarctica/Vostok.tz
 lib/Time/OlsonTZ/Data/Asia/Aden.tz
 lib/Time/OlsonTZ/Data/Asia/Almaty.tz
