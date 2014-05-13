@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 2;
+use Test::More 0.41 tests => 2;
 
 BEGIN { use_ok "Time::OlsonTZ::Data", qw(olson_canonical_names olson_tzfile); }
 

@@ -4,7 +4,7 @@ author:
   - 'Andrew Main (Zefram) <zefram@fysh.org>'
 build_requires:
   Module::Build: '0.26'
-  Test::More: '0'
+  Test::More: '0.41'
   perl: '5.006'
   strict: '0'
   warnings: '0'
@@ -23,7 +23,7 @@ name: Time-OlsonTZ-Data
 provides:
   Time::OlsonTZ::Data:
     file: lib/Time/OlsonTZ/Data.pm
-    version: '0.201402'
+    version: '0.201403'
 requires:
   Carp: '0'
   Exporter: '0'
@@ -35,4 +35,4 @@ requires:
   warnings: '0'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.201402'
+version: '0.201403'

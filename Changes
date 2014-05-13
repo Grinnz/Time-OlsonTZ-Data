@@ -1,3 +1,10 @@
+version 0.201403; 2014-05-13
+
+  * Olson database version 2014c (code 2014c, data 2014c): 425 canonical
+    zones, 155 links
+
+  * declare correct version for Test::More dependency
+
 version 0.201402; 2014-03-25
 
   * Olson database version 2014b (code 2014b, data 2014b): 425 canonical
