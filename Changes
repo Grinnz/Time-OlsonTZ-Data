@@ -1,3 +1,8 @@
+version 0.201404; 2014-05-28
+
+  * Olson database version 2014d (code 2014d, data 2014d): 425 canonical
+    zones, 155 links
+
 version 0.201403; 2014-05-13
 
   * Olson database version 2014c (code 2014c, data 2014c): 425 canonical
