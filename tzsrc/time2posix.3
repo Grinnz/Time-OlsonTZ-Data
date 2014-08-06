@@ -3,6 +3,8 @@
 time2posix, posix2time \- convert seconds since the Epoch
 .SH SYNOPSIS
 .nf
+.ie \n(.g .ds - \f(CW-\fP
+.el ds - \-
 .B #include <sys/types.h>
 .B #include <time.h>
 .PP
@@ -12,9 +14,18 @@ time2posix, posix2time \- convert seconds since the Epoch
 .B time_t posix2time(t)
 .B time_t t
 .PP
-.B cc ... -ltz
+.B cc ... \*-ltz
 .fi
 .SH DESCRIPTION
+.ie '\(en'' .ds en \-
+.el .ds en \(en
+.ie '\(lq'' .ds lq \&"\"
+.el .ds lq \(lq\"
+.ie '\(rq'' .ds rq \&"\"
+.el .ds rq \(rq\"
+.de q
+\\$3\*(lq\\$1\*(rq\\$2
+..
 IEEE Standard 1003.1
 (POSIX)
 legislates that a time_t value of
@@ -29,14 +40,16 @@ enabled,
 however,
 no such adjustment is needed and
 time_t values continue to increase over leap events
-(as a true `seconds since...' value).
+(as a true
+.q "seconds since..."
+value).
 This means that these values will differ from those required by POSIX
 by the net number of leap seconds inserted since the Epoch.
 .PP
 Typically this is not a problem as the type time_t is intended
 to be
 (mostly)
-opaque\(emtime_t values should only be obtained-from and
+opaque \*(en time_t values should only be obtained-from and
 passed-to functions such as
 .IR time(2) ,
 .IR localtime(3) ,

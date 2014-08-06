@@ -2,7 +2,7 @@ NEWCTIME(3)                Library Functions Manual                NEWCTIME(3)
 
 NAME
        asctime, ctime, difftime, gmtime, localtime, mktime - convert date and
-       time to ASCII
+       time
 
 SYNOPSIS
        extern char *tzname[2];
@@ -55,16 +55,16 @@ DESCRIPTION
        UTC and are some other flavor of Universal Time (UT).  Some
        implementations support leap seconds, in contradiction to POSIX.
 
-       Localtime and gmtime return pointers to ``tm'' structures, described
+       Localtime and gmtime return pointers to "tm" structures, described
        below.  Localtime corrects for the time zone and any time zone
        adjustments (such as Daylight Saving Time in the United States).  After
-       filling in the ``tm'' structure, localtime sets the tm_isdst'th element
-       of tzname to a pointer to an ASCII string that's the time zone
-       abbreviation to be used with localtime's return value.
+       filling in the "tm" structure, localtime sets the tm_isdst'th element
+       of tzname to a pointer to a string that's the time zone abbreviation to
+       be used with localtime's return value.
 
        Gmtime converts to Coordinated Universal Time.
 
-       Asctime converts a time value contained in a ``tm'' structure to a
+       Asctime converts a time value contained in a "tm" structure to a
        string, as shown in the above example, and returns a pointer to the
        string.
 
@@ -91,18 +91,18 @@ DESCRIPTION
        Difftime returns the difference between two calendar times, (time1 -
        time0), expressed in seconds.
 
-       Declarations of all the functions and externals, and the ``tm''
+       Declarations of all the functions and externals, and the "tm"
        structure, are in the <time.h> header file.  The structure (of type)
        struct tm includes the following fields:
 
-                   int tm_sec;      /* seconds (0 - 60) */
-                   int tm_min;      /* minutes (0 - 59) */
-                   int tm_hour;     /* hours (0 - 23) */
-                   int tm_mday;     /* day of month (1 - 31) */
-                   int tm_mon;      /* month of year (0 - 11) */
+                   int tm_sec;      /* seconds (0-60) */
+                   int tm_min;      /* minutes (0-59) */
+                   int tm_hour;     /* hours (0-23) */
+                   int tm_mday;     /* day of month (1-31) */
+                   int tm_mon;      /* month of year (0-11) */
                    int tm_year;     /* year - 1900 */
                    int tm_wday;     /* day of week (Sunday = 0) */
-                   int tm_yday;     /* day of year (0 - 365) */
+                   int tm_yday;     /* day of year (0-365) */
                    int tm_isdst;    /* is summer time in effect? */
                    char *tm_zone;   /* abbreviation of timezone name */
                    long tm_gmtoff;  /* offset from UT in seconds */

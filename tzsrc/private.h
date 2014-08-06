@@ -19,7 +19,7 @@
 
 /*
 ** Defaults for preprocessor symbols.
-** You can override these in your C compiler options, e.g. `-DHAVE_ADJTIME=0'.
+** You can override these in your C compiler options, e.g. '-DHAVE_ADJTIME=0'.
 */
 
 #ifndef HAVE_ADJTIME
@@ -352,29 +352,15 @@ static time_t const time_t_max =
 ** INITIALIZE(x)
 */
 
-#ifndef GNUC_or_lint
 #ifdef lint
-#define GNUC_or_lint
-#endif /* defined lint */
-#ifndef lint
-#ifdef __GNUC__
-#define GNUC_or_lint
-#endif /* defined __GNUC__ */
-#endif /* !defined lint */
-#endif /* !defined GNUC_or_lint */
-
-#ifndef INITIALIZE
-#ifdef GNUC_or_lint
-#define INITIALIZE(x)	((x) = 0)
-#endif /* defined GNUC_or_lint */
-#ifndef GNUC_or_lint
-#define INITIALIZE(x)
-#endif /* !defined GNUC_or_lint */
-#endif /* !defined INITIALIZE */
+# define INITIALIZE(x)	((x) = 0)
+#else
+# define INITIALIZE(x)
+#endif
 
 /*
 ** For the benefit of GNU folk...
-** `_(MSGID)' uses the current locale's message library string for MSGID.
+** '_(MSGID)' uses the current locale's message library string for MSGID.
 ** The default is to use gettext if available, and use MSGID otherwise.
 */
 
@@ -386,9 +372,9 @@ static time_t const time_t_max =
 #endif /* !HAVE_GETTEXT */
 #endif /* !defined _ */
 
-#ifndef TZ_DOMAIN
-#define TZ_DOMAIN "tz"
-#endif /* !defined TZ_DOMAIN */
+#if !defined TZ_DOMAIN && defined HAVE_GETTEXT
+# define TZ_DOMAIN "tz"
+#endif
 
 #if HAVE_INCOMPATIBLE_CTIME_R
 #undef asctime_r
@@ -416,9 +402,5 @@ char *ctime_r(time_t const *, char *);
 #ifndef SECSPERREPEAT_BITS
 #define SECSPERREPEAT_BITS	34	/* ceil(log2(SECSPERREPEAT)) */
 #endif /* !defined SECSPERREPEAT_BITS */
-
-/*
-** UNIX was a registered trademark of The Open Group in 2003.
-*/
 
 #endif /* !defined PRIVATE_H */

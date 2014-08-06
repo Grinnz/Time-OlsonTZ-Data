@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201405";
+our $VERSION = "0.201406";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2014e";
+use constant olson_version => "2014f";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2014e";
+use constant olson_code_version => "2014f";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2014e";
+use constant olson_data_version => "2014f";
 
 =back
 
@@ -121,19 +121,17 @@ values are all C<undef>.
 
 my $cn = q(+{ map { ($_ => undef) } qw(
 	Africa/Abidjan Africa/Accra Africa/Addis_Ababa Africa/Algiers
-	Africa/Asmara Africa/Bamako Africa/Bangui Africa/Banjul Africa/Bissau
-	Africa/Blantyre Africa/Brazzaville Africa/Bujumbura Africa/Cairo
-	Africa/Casablanca Africa/Ceuta Africa/Conakry Africa/Dakar
-	Africa/Dar_es_Salaam Africa/Djibouti Africa/Douala Africa/El_Aaiun
-	Africa/Freetown Africa/Gaborone Africa/Harare Africa/Johannesburg
+	Africa/Asmara Africa/Bangui Africa/Bissau Africa/Blantyre
+	Africa/Brazzaville Africa/Bujumbura Africa/Cairo Africa/Casablanca
+	Africa/Ceuta Africa/Dar_es_Salaam Africa/Djibouti Africa/Douala
+	Africa/El_Aaiun Africa/Gaborone Africa/Harare Africa/Johannesburg
 	Africa/Kampala Africa/Khartoum Africa/Kigali Africa/Kinshasa
-	Africa/Lagos Africa/Libreville Africa/Lome Africa/Luanda
-	Africa/Lubumbashi Africa/Lusaka Africa/Malabo Africa/Maputo
-	Africa/Maseru Africa/Mbabane Africa/Mogadishu Africa/Monrovia
-	Africa/Nairobi Africa/Ndjamena Africa/Niamey Africa/Nouakchott
-	Africa/Ouagadougou Africa/Porto-Novo Africa/Sao_Tome Africa/Tripoli
-	Africa/Tunis Africa/Windhoek America/Adak America/Anchorage
-	America/Antigua America/Araguaina America/Argentina/Buenos_Aires
+	Africa/Lagos Africa/Libreville Africa/Luanda Africa/Lubumbashi
+	Africa/Lusaka Africa/Malabo Africa/Maputo Africa/Maseru Africa/Mbabane
+	Africa/Mogadishu Africa/Monrovia Africa/Nairobi Africa/Ndjamena
+	Africa/Niamey Africa/Porto-Novo Africa/Tripoli Africa/Tunis
+	Africa/Windhoek America/Adak America/Anchorage America/Antigua
+	America/Araguaina America/Argentina/Buenos_Aires
 	America/Argentina/Catamarca America/Argentina/Cordoba
 	America/Argentina/Jujuy America/Argentina/La_Rioja
 	America/Argentina/Mendoza America/Argentina/Rio_Gallegos
@@ -178,23 +176,22 @@ my $cn = q(+{ map { ($_ => undef) } qw(
 	Antarctica/Rothera Antarctica/Syowa Antarctica/Troll Antarctica/Vostok
 	Asia/Aden Asia/Almaty Asia/Amman Asia/Anadyr Asia/Aqtau Asia/Aqtobe
 	Asia/Ashgabat Asia/Baghdad Asia/Bahrain Asia/Baku Asia/Bangkok
-	Asia/Beirut Asia/Bishkek Asia/Brunei Asia/Choibalsan Asia/Chongqing
+	Asia/Beirut Asia/Bishkek Asia/Brunei Asia/Chita Asia/Choibalsan
 	Asia/Colombo Asia/Damascus Asia/Dhaka Asia/Dili Asia/Dubai Asia/Dushanbe
-	Asia/Gaza Asia/Harbin Asia/Hebron Asia/Ho_Chi_Minh Asia/Hong_Kong
-	Asia/Hovd Asia/Irkutsk Asia/Jakarta Asia/Jayapura Asia/Jerusalem
-	Asia/Kabul Asia/Kamchatka Asia/Karachi Asia/Kashgar Asia/Kathmandu
-	Asia/Khandyga Asia/Kolkata Asia/Krasnoyarsk Asia/Kuala_Lumpur
-	Asia/Kuching Asia/Kuwait Asia/Macau Asia/Magadan Asia/Makassar
-	Asia/Manila Asia/Muscat Asia/Nicosia Asia/Novokuznetsk Asia/Novosibirsk
-	Asia/Omsk Asia/Oral Asia/Phnom_Penh Asia/Pontianak Asia/Pyongyang
-	Asia/Qatar Asia/Qyzylorda Asia/Rangoon Asia/Riyadh Asia/Sakhalin
-	Asia/Samarkand Asia/Seoul Asia/Shanghai Asia/Singapore Asia/Taipei
-	Asia/Tashkent Asia/Tbilisi Asia/Tehran Asia/Thimphu Asia/Tokyo
-	Asia/Ulaanbaatar Asia/Urumqi Asia/Ust-Nera Asia/Vientiane
-	Asia/Vladivostok Asia/Yakutsk Asia/Yekaterinburg Asia/Yerevan
-	Atlantic/Azores Atlantic/Bermuda Atlantic/Canary Atlantic/Cape_Verde
-	Atlantic/Faroe Atlantic/Madeira Atlantic/Reykjavik
-	Atlantic/South_Georgia Atlantic/St_Helena Atlantic/Stanley
+	Asia/Gaza Asia/Hebron Asia/Ho_Chi_Minh Asia/Hong_Kong Asia/Hovd
+	Asia/Irkutsk Asia/Jakarta Asia/Jayapura Asia/Jerusalem Asia/Kabul
+	Asia/Kamchatka Asia/Karachi Asia/Kathmandu Asia/Khandyga Asia/Kolkata
+	Asia/Krasnoyarsk Asia/Kuala_Lumpur Asia/Kuching Asia/Kuwait Asia/Macau
+	Asia/Magadan Asia/Makassar Asia/Manila Asia/Muscat Asia/Nicosia
+	Asia/Novokuznetsk Asia/Novosibirsk Asia/Omsk Asia/Oral Asia/Phnom_Penh
+	Asia/Pontianak Asia/Pyongyang Asia/Qatar Asia/Qyzylorda Asia/Rangoon
+	Asia/Riyadh Asia/Sakhalin Asia/Samarkand Asia/Seoul Asia/Shanghai
+	Asia/Singapore Asia/Srednekolymsk Asia/Taipei Asia/Tashkent Asia/Tbilisi
+	Asia/Tehran Asia/Thimphu Asia/Tokyo Asia/Ulaanbaatar Asia/Urumqi
+	Asia/Ust-Nera Asia/Vientiane Asia/Vladivostok Asia/Yakutsk
+	Asia/Yekaterinburg Asia/Yerevan Atlantic/Azores Atlantic/Bermuda
+	Atlantic/Canary Atlantic/Cape_Verde Atlantic/Faroe Atlantic/Madeira
+	Atlantic/Reykjavik Atlantic/South_Georgia Atlantic/Stanley
 	Australia/Adelaide Australia/Brisbane Australia/Broken_Hill
 	Australia/Currie Australia/Darwin Australia/Eucla Australia/Hobart
 	Australia/Lindeman Australia/Lord_Howe Australia/Melbourne
@@ -277,8 +274,17 @@ be found in the L</olson_canonical_names> hash.
 
 my $li = q(+{
 	"Africa/Asmera" => "Africa/Asmara",
+	"Africa/Bamako" => "Africa/Abidjan",
+	"Africa/Banjul" => "Africa/Abidjan",
+	"Africa/Conakry" => "Africa/Abidjan",
+	"Africa/Dakar" => "Africa/Abidjan",
+	"Africa/Freetown" => "Africa/Abidjan",
 	"Africa/Juba" => "Africa/Khartoum",
-	"Africa/Timbuktu" => "Africa/Bamako",
+	"Africa/Lome" => "Africa/Abidjan",
+	"Africa/Nouakchott" => "Africa/Abidjan",
+	"Africa/Ouagadougou" => "Africa/Abidjan",
+	"Africa/Sao_Tome" => "Africa/Abidjan",
+	"Africa/Timbuktu" => "Africa/Abidjan",
 	"America/Anguilla" => "America/Port_of_Spain",
 	"America/Argentina/ComodRivadavia" => "America/Argentina/Catamarca",
 	"America/Aruba" => "America/Curacao",
@@ -316,9 +322,12 @@ my $li = q(+{
 	"Arctic/Longyearbyen" => "Europe/Oslo",
 	"Asia/Ashkhabad" => "Asia/Ashgabat",
 	"Asia/Calcutta" => "Asia/Kolkata",
-	"Asia/Chungking" => "Asia/Chongqing",
+	"Asia/Chongqing" => "Asia/Shanghai",
+	"Asia/Chungking" => "Asia/Shanghai",
 	"Asia/Dacca" => "Asia/Dhaka",
+	"Asia/Harbin" => "Asia/Shanghai",
 	"Asia/Istanbul" => "Europe/Istanbul",
+	"Asia/Kashgar" => "Asia/Urumqi",
 	"Asia/Katmandu" => "Asia/Kathmandu",
 	"Asia/Macao" => "Asia/Macau",
 	"Asia/Saigon" => "Asia/Ho_Chi_Minh",
@@ -328,6 +337,7 @@ my $li = q(+{
 	"Asia/Ulan_Bator" => "Asia/Ulaanbaatar",
 	"Atlantic/Faeroe" => "Atlantic/Faroe",
 	"Atlantic/Jan_Mayen" => "Europe/Oslo",
+	"Atlantic/St_Helena" => "Africa/Abidjan",
 	"Australia/ACT" => "Australia/Sydney",
 	"Australia/Canberra" => "Australia/Sydney",
 	"Australia/LHI" => "Australia/Lord_Howe",

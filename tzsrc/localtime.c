@@ -115,16 +115,16 @@ struct state {
 };
 
 struct rule {
-	int		r_type;		/* type of rule--see below */
+	int		r_type;		/* type of rule; see below */
 	int		r_day;		/* day number of rule */
 	int		r_week;		/* week number of rule */
 	int		r_mon;		/* month number of rule */
 	int_fast32_t	r_time;		/* transition time of rule */
 };
 
-#define JULIAN_DAY		0	/* Jn - Julian day */
-#define DAY_OF_YEAR		1	/* n - day of year */
-#define MONTH_NTH_DAY_OF_WEEK	2	/* Mm.n.d - month, week, day of week */
+#define JULIAN_DAY		0	/* Jn = Julian day */
+#define DAY_OF_YEAR		1	/* n = day of year */
+#define MONTH_NTH_DAY_OF_WEEK	2	/* Mm.n.d = month, week, day of week */
 
 /*
 ** Prototypes for static functions.
@@ -335,22 +335,7 @@ tzload(register const char *name, register struct state *const sp,
 					2 * sizeof *sp +
 					4 * TZ_MAX_TIMES];
 	} u_t;
-#ifdef ALL_STATE
-	register u_t * const		up = malloc(sizeof *up);
-#else /* !defined ALL_STATE */
-	u_t				u;
-	register u_t * const		up = &u;
-#endif /* !defined ALL_STATE */
-
-	sp->goback = sp->goahead = FALSE;
-
-	if (up == NULL)
-		return -1;
-
-	if (name == NULL && (name = TZDEFAULT) == NULL)
-		goto oops;
-	{
-		register int	doaccess;
+	union local_storage {
 		/*
 		** Section 4.9.1 of the C standard says that
 		** "FILENAME_MAX expands to an integral constant expression
@@ -360,29 +345,56 @@ tzload(register const char *name, register struct state *const sp,
 		*/
 		char		fullname[FILENAME_MAX + 1];
 
-		if (name[0] == ':')
-			++name;
-		doaccess = name[0] == '/';
-		if (!doaccess) {
-			if ((p = TZDIR) == NULL)
-				goto oops;
-			if ((strlen(p) + strlen(name) + 1) >= sizeof fullname)
-				goto oops;
-			(void) strcpy(fullname, p);
-			(void) strcat(fullname, "/");
-			(void) strcat(fullname, name);
-			/*
-			** Set doaccess if '.' (as in "../") shows up in name.
-			*/
-			if (strchr(name, '.') != NULL)
-				doaccess = TRUE;
-			name = fullname;
-		}
-		if (doaccess && access(name, R_OK) != 0)
-			goto oops;
-		if ((fid = open(name, OPEN_MODE)) == -1)
+		/* The main part of the storage for this function.  */
+		struct {
+			u_t u;
+			struct state st;
+		} u;
+	};
+	register char *fullname;
+	register u_t *up;
+	register int doaccess;
+	register union local_storage *lsp;
+#ifdef ALL_STATE
+	lsp = malloc(sizeof *lsp);
+	if (!lsp)
+		return -1;
+#else /* !defined ALL_STATE */
+	union local_storage ls;
+	lsp = &ls;
+#endif /* !defined ALL_STATE */
+	fullname = lsp->fullname;
+	up = &lsp->u.u;
+
+	sp->goback = sp->goahead = FALSE;
+
+	if (! name) {
+		name = TZDEFAULT;
+		if (! name)
 			goto oops;
 	}
+
+	if (name[0] == ':')
+		++name;
+	doaccess = name[0] == '/';
+	if (!doaccess) {
+		p = TZDIR;
+		if (! p || sizeof lsp->fullname - 1 <= strlen(p) + strlen(name))
+			goto oops;
+		strcpy(fullname, p);
+		strcat(fullname, "/");
+		strcat(fullname, name);
+		/* Set doaccess if '.' (as in "../") shows up in name.  */
+		if (strchr(name, '.'))
+			doaccess = TRUE;
+		name = fullname;
+	}
+	if (doaccess && access(name, R_OK) != 0)
+		goto oops;
+	fid = open(name, OPEN_MODE);
+	if (fid < 0)
+		goto oops;
+
 	nread = read(fid, up->buf, sizeof up->buf);
 	if (close(fid) < 0 || nread <= 0)
 		goto oops;
@@ -515,36 +527,36 @@ tzload(register const char *name, register struct state *const sp,
 	if (doextend && nread > 2 &&
 		up->buf[0] == '\n' && up->buf[nread - 1] == '\n' &&
 		sp->typecnt + 2 <= TZ_MAX_TYPES) {
-			struct state	ts;
+			struct state	*ts = &lsp->u.st;
 			register int	result;
 
 			up->buf[nread - 1] = '\0';
-			result = tzparse(&up->buf[1], &ts, FALSE);
-			if (result == 0 && ts.typecnt == 2 &&
-				sp->charcnt + ts.charcnt <= TZ_MAX_CHARS) {
+			result = tzparse(&up->buf[1], ts, FALSE);
+			if (result == 0 && ts->typecnt == 2 &&
+				sp->charcnt + ts->charcnt <= TZ_MAX_CHARS) {
 					for (i = 0; i < 2; ++i)
-						ts.ttis[i].tt_abbrind +=
+						ts->ttis[i].tt_abbrind +=
 							sp->charcnt;
-					for (i = 0; i < ts.charcnt; ++i)
+					for (i = 0; i < ts->charcnt; ++i)
 						sp->chars[sp->charcnt++] =
-							ts.chars[i];
+							ts->chars[i];
 					i = 0;
-					while (i < ts.timecnt &&
-						ts.ats[i] <=
+					while (i < ts->timecnt &&
+						ts->ats[i] <=
 						sp->ats[sp->timecnt - 1])
 							++i;
-					while (i < ts.timecnt &&
+					while (i < ts->timecnt &&
 					    sp->timecnt < TZ_MAX_TIMES) {
 						sp->ats[sp->timecnt] =
-							ts.ats[i];
+							ts->ats[i];
 						sp->types[sp->timecnt] =
 							sp->typecnt +
-							ts.types[i];
+							ts->types[i];
 						++sp->timecnt;
 						++i;
 					}
-					sp->ttis[sp->typecnt++] = ts.ttis[0];
-					sp->ttis[sp->typecnt++] = ts.ttis[1];
+					sp->ttis[sp->typecnt++] = ts->ttis[0];
+					sp->ttis[sp->typecnt++] = ts->ttis[1];
 			}
 	}
 	if (sp->timecnt > 1) {
@@ -717,10 +729,10 @@ getsecs(register const char *strp, int_fast32_t *const secsp)
 	int	num;
 
 	/*
-	** `HOURSPERDAY * DAYSPERWEEK - 1' allows quasi-Posix rules like
+	** 'HOURSPERDAY * DAYSPERWEEK - 1' allows quasi-Posix rules like
 	** "M10.4.6/26", which does not conform to Posix,
 	** but which specifies the equivalent of
-	** ``02:00 on the first Sunday on or after 23 Oct''.
+	** "02:00 on the first Sunday on or after 23 Oct".
 	*/
 	strp = getnum(strp, &num, 0, HOURSPERDAY * DAYSPERWEEK - 1);
 	if (strp == NULL)
@@ -734,7 +746,7 @@ getsecs(register const char *strp, int_fast32_t *const secsp)
 		*secsp += num * SECSPERMIN;
 		if (*strp == ':') {
 			++strp;
-			/* `SECSPERMIN' allows for leap seconds. */
+			/* 'SECSPERMIN' allows for leap seconds.  */
 			strp = getnum(strp, &num, 0, SECSPERMIN);
 			if (strp == NULL)
 				return NULL;
@@ -932,7 +944,6 @@ tzparse(const char *name, register struct state *const sp,
 	register int			load_result;
 	static struct ttinfo		zttinfo;
 
-	INITIALIZE(dstname);
 	stdname = name;
 	if (lastditch) {
 		stdlen = strlen(name);	/* length of standard zone name */
@@ -1244,8 +1255,8 @@ tzset(void)
 
 /*
 ** The easy way to behave "as if no library function calls" localtime
-** is to not call it--so we drop its guts into "localsub", which can be
-** freely called. (And no, the PANS doesn't require the above behavior--
+** is to not call it, so we drop its guts into "localsub", which can be
+** freely called. (And no, the PANS doesn't require the above behavior,
 ** but it *is* desirable.)
 **
 ** The unused offset argument is for the benefit of mktime variants.
@@ -1356,11 +1367,13 @@ gmtsub(const time_t *const timep, const int_fast32_t offset,
 	register struct tm *	result;
 
 	if (!gmt_is_set) {
-		gmt_is_set = TRUE;
 #ifdef ALL_STATE
 		gmtptr = malloc(sizeof *gmtptr);
+		gmt_is_set = gmtptr != NULL;
+#else
+		gmt_is_set = TRUE;
 #endif /* defined ALL_STATE */
-		if (gmtptr != NULL)
+		if (gmt_is_set)
 			gmtload(gmtptr);
 	}
 	result = timesub(timep, offset, gmtptr, tmp);
@@ -1867,8 +1880,8 @@ time1(struct tm *const tmp,
 	register int			sameind, otherind;
 	register int			i;
 	register int			nseen;
-	int				seen[TZ_MAX_TYPES];
-	int				types[TZ_MAX_TYPES];
+	char				seen[TZ_MAX_TYPES];
+	unsigned char			types[TZ_MAX_TYPES];
 	int				okay;
 
 	if (tmp == NULL) {

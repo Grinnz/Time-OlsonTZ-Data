@@ -663,11 +663,6 @@ use strict;
 				olson_description => "Atlantic Time - Nova Scotia - places that did not observe DST 1966-1971",
 				timezone_name => "America/Glace_Bay",
 			},
-			"Central Standard Time - Resolute, Nunavut" => {
-				location_coords => "+744144-0944945",
-				olson_description => "Central Standard Time - Resolute, Nunavut",
-				timezone_name => "America/Resolute",
-			},
 			"Central Standard Time - Saskatchewan - midwest" => {
 				location_coords => "+5017-10750",
 				olson_description => "Central Standard Time - Saskatchewan - midwest",
@@ -687,6 +682,11 @@ use strict;
 				location_coords => "+4843-09434",
 				olson_description => "Central Time - Rainy River & Fort Frances, Ontario",
 				timezone_name => "America/Rainy_River",
+			},
+			"Central Time - Resolute, Nunavut" => {
+				location_coords => "+744144-0944945",
+				olson_description => "Central Time - Resolute, Nunavut",
+				timezone_name => "America/Resolute",
 			},
 			"Central Time - central Nunavut" => {
 				location_coords => "+624900-0920459",
@@ -861,9 +861,9 @@ use strict;
 		alpha2_code => "CL",
 		olson_name => "Chile",
 		regions => {
-			"Easter Island & Sala y Gomez" => {
+			"Easter Island" => {
 				location_coords => "-2709-10926",
-				olson_description => "Easter Island & Sala y Gomez",
+				olson_description => "Easter Island",
 				timezone_name => "Pacific/Easter",
 			},
 			"most locations" => {
@@ -888,30 +888,15 @@ use strict;
 		alpha2_code => "CN",
 		olson_name => "China",
 		regions => {
-			"Heilongjiang (except Mohe), Jilin" => {
-				location_coords => "+4545+12641",
-				olson_description => "Heilongjiang (except Mohe), Jilin",
-				timezone_name => "Asia/Harbin",
-			},
-			"central China - Sichuan, Yunnan, Guangxi, Shaanxi, Guizhou, etc." => {
-				location_coords => "+2934+10635",
-				olson_description => "central China - Sichuan, Yunnan, Guangxi, Shaanxi, Guizhou, etc.",
-				timezone_name => "Asia/Chongqing",
-			},
-			"east China - Beijing, Guangdong, Shanghai, etc." => {
+			"Beijing Time" => {
 				location_coords => "+3114+12128",
-				olson_description => "east China - Beijing, Guangdong, Shanghai, etc.",
+				olson_description => "Beijing Time",
 				timezone_name => "Asia/Shanghai",
 			},
-			"most of Tibet & Xinjiang" => {
+			"Xinjiang Time" => {
 				location_coords => "+4348+08735",
-				olson_description => "most of Tibet & Xinjiang",
+				olson_description => "Xinjiang Time",
 				timezone_name => "Asia/Urumqi",
-			},
-			"west Tibet & Xinjiang" => {
-				location_coords => "+3929+07559",
-				olson_description => "west Tibet & Xinjiang",
-				timezone_name => "Asia/Kashgar",
 			},
 		},
 	},
@@ -2665,6 +2650,11 @@ use strict;
 		alpha2_code => "RU",
 		olson_name => "Russia",
 		regions => {
+			"Moscow+00 (Moscow+01 after 2014-10-26) - Samara, Udmurtia" => {
+				location_coords => "+5312+05009",
+				olson_description => "Moscow+00 (Moscow+01 after 2014-10-26) - Samara, Udmurtia",
+				timezone_name => "Europe/Samara",
+			},
 			"Moscow+00 - Caspian Sea" => {
 				location_coords => "+4844+04425",
 				olson_description => "Moscow+00 - Caspian Sea",
@@ -2675,13 +2665,8 @@ use strict;
 				olson_description => "Moscow+00 - Crimea",
 				timezone_name => "Europe/Simferopol",
 			},
-			"Moscow+00 - Samara, Udmurtia" => {
-				location_coords => "+5312+05009",
-				olson_description => "Moscow+00 - Samara, Udmurtia",
-				timezone_name => "Europe/Samara",
-			},
 			"Moscow+00 - west Russia" => {
-				location_coords => "+5545+03735",
+				location_coords => "+554521+0373704",
 				olson_description => "Moscow+00 - west Russia",
 				timezone_name => "Europe/Moscow",
 			},
@@ -2690,9 +2675,9 @@ use strict;
 				olson_description => "Moscow+02 - Urals",
 				timezone_name => "Asia/Yekaterinburg",
 			},
-			"Moscow+03 - Novokuznetsk" => {
+			"Moscow+03 (Moscow+04 after 2014-10-26) - Kemerovo" => {
 				location_coords => "+5345+08707",
-				olson_description => "Moscow+03 - Novokuznetsk",
+				olson_description => "Moscow+03 (Moscow+04 after 2014-10-26) - Kemerovo",
 				timezone_name => "Asia/Novokuznetsk",
 			},
 			"Moscow+03 - Novosibirsk" => {
@@ -2714,6 +2699,11 @@ use strict;
 				location_coords => "+5216+10420",
 				olson_description => "Moscow+05 - Lake Baikal",
 				timezone_name => "Asia/Irkutsk",
+			},
+			"Moscow+06 (Moscow+05 after 2014-10-26) - Zabaykalsky" => {
+				location_coords => "+5203+11328",
+				olson_description => "Moscow+06 (Moscow+05 after 2014-10-26) - Zabaykalsky",
+				timezone_name => "Asia/Chita",
 			},
 			"Moscow+06 - Lena River" => {
 				location_coords => "+6200+12940",
@@ -2740,20 +2730,25 @@ use strict;
 				olson_description => "Moscow+07 - Sakhalin Island",
 				timezone_name => "Asia/Sakhalin",
 			},
-			"Moscow+08 - Bering Sea" => {
+			"Moscow+08 (Moscow+07 after 2014-10-26) - Magadan" => {
+				location_coords => "+5934+15048",
+				olson_description => "Moscow+08 (Moscow+07 after 2014-10-26) - Magadan",
+				timezone_name => "Asia/Magadan",
+			},
+			"Moscow+08 (Moscow+09 after 2014-10-26) - Bering Sea" => {
 				location_coords => "+6445+17729",
-				olson_description => "Moscow+08 - Bering Sea",
+				olson_description => "Moscow+08 (Moscow+09 after 2014-10-26) - Bering Sea",
 				timezone_name => "Asia/Anadyr",
 			},
-			"Moscow+08 - Kamchatka" => {
+			"Moscow+08 (Moscow+09 after 2014-10-26) - Kamchatka" => {
 				location_coords => "+5301+15839",
-				olson_description => "Moscow+08 - Kamchatka",
+				olson_description => "Moscow+08 (Moscow+09 after 2014-10-26) - Kamchatka",
 				timezone_name => "Asia/Kamchatka",
 			},
-			"Moscow+08 - Magadan" => {
-				location_coords => "+5934+15048",
-				olson_description => "Moscow+08 - Magadan",
-				timezone_name => "Asia/Magadan",
+			"Moscow+08 - E Sakha, N Kuril Is" => {
+				location_coords => "+6728+15343",
+				olson_description => "Moscow+08 - E Sakha, N Kuril Is",
+				timezone_name => "Asia/Srednekolymsk",
 			},
 			"Moscow-01 - Kaliningrad" => {
 				location_coords => "+5443+02030",
@@ -3357,11 +3352,6 @@ use strict;
 				olson_description => "Hawaii",
 				timezone_name => "Pacific/Honolulu",
 			},
-			"Metlakatla Time - Annette Island" => {
-				location_coords => "+550737-1313435",
-				olson_description => "Metlakatla Time - Annette Island",
-				timezone_name => "America/Metlakatla",
-			},
 			"Mountain Standard Time - Arizona (except Navajo)" => {
 				location_coords => "+332654-1120424",
 				olson_description => "Mountain Standard Time - Arizona (except Navajo)",
@@ -3376,6 +3366,11 @@ use strict;
 				location_coords => "+433649-1161209",
 				olson_description => "Mountain Time - south Idaho & east Oregon",
 				timezone_name => "America/Boise",
+			},
+			"Pacific Standard Time - Annette Island, Alaska" => {
+				location_coords => "+550737-1313435",
+				olson_description => "Pacific Standard Time - Annette Island, Alaska",
+				timezone_name => "America/Metlakatla",
 			},
 			"Pacific Time" => {
 				location_coords => "+340308-1181434",

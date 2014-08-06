@@ -14,9 +14,7 @@ lib/Time/OlsonTZ/Data/Africa/Accra.tz
 lib/Time/OlsonTZ/Data/Africa/Addis_Ababa.tz
 lib/Time/OlsonTZ/Data/Africa/Algiers.tz
 lib/Time/OlsonTZ/Data/Africa/Asmara.tz
-lib/Time/OlsonTZ/Data/Africa/Bamako.tz
 lib/Time/OlsonTZ/Data/Africa/Bangui.tz
-lib/Time/OlsonTZ/Data/Africa/Banjul.tz
 lib/Time/OlsonTZ/Data/Africa/Bissau.tz
 lib/Time/OlsonTZ/Data/Africa/Blantyre.tz
 lib/Time/OlsonTZ/Data/Africa/Brazzaville.tz
@@ -24,13 +22,10 @@ lib/Time/OlsonTZ/Data/Africa/Bujumbura.tz
 lib/Time/OlsonTZ/Data/Africa/Cairo.tz
 lib/Time/OlsonTZ/Data/Africa/Casablanca.tz
 lib/Time/OlsonTZ/Data/Africa/Ceuta.tz
-lib/Time/OlsonTZ/Data/Africa/Conakry.tz
-lib/Time/OlsonTZ/Data/Africa/Dakar.tz
 lib/Time/OlsonTZ/Data/Africa/Dar_es_Salaam.tz
 lib/Time/OlsonTZ/Data/Africa/Djibouti.tz
 lib/Time/OlsonTZ/Data/Africa/Douala.tz
 lib/Time/OlsonTZ/Data/Africa/El_Aaiun.tz
-lib/Time/OlsonTZ/Data/Africa/Freetown.tz
 lib/Time/OlsonTZ/Data/Africa/Gaborone.tz
 lib/Time/OlsonTZ/Data/Africa/Harare.tz
 lib/Time/OlsonTZ/Data/Africa/Johannesburg.tz
@@ -40,7 +35,6 @@ lib/Time/OlsonTZ/Data/Africa/Kigali.tz
 lib/Time/OlsonTZ/Data/Africa/Kinshasa.tz
 lib/Time/OlsonTZ/Data/Africa/Lagos.tz
 lib/Time/OlsonTZ/Data/Africa/Libreville.tz
-lib/Time/OlsonTZ/Data/Africa/Lome.tz
 lib/Time/OlsonTZ/Data/Africa/Luanda.tz
 lib/Time/OlsonTZ/Data/Africa/Lubumbashi.tz
 lib/Time/OlsonTZ/Data/Africa/Lusaka.tz
@@ -53,10 +47,7 @@ lib/Time/OlsonTZ/Data/Africa/Monrovia.tz
 lib/Time/OlsonTZ/Data/Africa/Nairobi.tz
 lib/Time/OlsonTZ/Data/Africa/Ndjamena.tz
 lib/Time/OlsonTZ/Data/Africa/Niamey.tz
-lib/Time/OlsonTZ/Data/Africa/Nouakchott.tz
-lib/Time/OlsonTZ/Data/Africa/Ouagadougou.tz
 lib/Time/OlsonTZ/Data/Africa/Porto-Novo.tz
-lib/Time/OlsonTZ/Data/Africa/Sao_Tome.tz
 lib/Time/OlsonTZ/Data/Africa/Tripoli.tz
 lib/Time/OlsonTZ/Data/Africa/Tunis.tz
 lib/Time/OlsonTZ/Data/Africa/Windhoek.tz
@@ -216,8 +207,8 @@ lib/Time/OlsonTZ/Data/Asia/Bangkok.tz
 lib/Time/OlsonTZ/Data/Asia/Beirut.tz
 lib/Time/OlsonTZ/Data/Asia/Bishkek.tz
 lib/Time/OlsonTZ/Data/Asia/Brunei.tz
+lib/Time/OlsonTZ/Data/Asia/Chita.tz
 lib/Time/OlsonTZ/Data/Asia/Choibalsan.tz
-lib/Time/OlsonTZ/Data/Asia/Chongqing.tz
 lib/Time/OlsonTZ/Data/Asia/Colombo.tz
 lib/Time/OlsonTZ/Data/Asia/Damascus.tz
 lib/Time/OlsonTZ/Data/Asia/Dhaka.tz
@@ -225,7 +216,6 @@ lib/Time/OlsonTZ/Data/Asia/Dili.tz
 lib/Time/OlsonTZ/Data/Asia/Dubai.tz
 lib/Time/OlsonTZ/Data/Asia/Dushanbe.tz
 lib/Time/OlsonTZ/Data/Asia/Gaza.tz
-lib/Time/OlsonTZ/Data/Asia/Harbin.tz
 lib/Time/OlsonTZ/Data/Asia/Hebron.tz
 lib/Time/OlsonTZ/Data/Asia/Ho_Chi_Minh.tz
 lib/Time/OlsonTZ/Data/Asia/Hong_Kong.tz
@@ -237,7 +227,6 @@ lib/Time/OlsonTZ/Data/Asia/Jerusalem.tz
 lib/Time/OlsonTZ/Data/Asia/Kabul.tz
 lib/Time/OlsonTZ/Data/Asia/Kamchatka.tz
 lib/Time/OlsonTZ/Data/Asia/Karachi.tz
-lib/Time/OlsonTZ/Data/Asia/Kashgar.tz
 lib/Time/OlsonTZ/Data/Asia/Kathmandu.tz
 lib/Time/OlsonTZ/Data/Asia/Khandyga.tz
 lib/Time/OlsonTZ/Data/Asia/Kolkata.tz
@@ -267,6 +256,7 @@ lib/Time/OlsonTZ/Data/Asia/Samarkand.tz
 lib/Time/OlsonTZ/Data/Asia/Seoul.tz
 lib/Time/OlsonTZ/Data/Asia/Shanghai.tz
 lib/Time/OlsonTZ/Data/Asia/Singapore.tz
+lib/Time/OlsonTZ/Data/Asia/Srednekolymsk.tz
 lib/Time/OlsonTZ/Data/Asia/Taipei.tz
 lib/Time/OlsonTZ/Data/Asia/Tashkent.tz
 lib/Time/OlsonTZ/Data/Asia/Tbilisi.tz
@@ -289,7 +279,6 @@ lib/Time/OlsonTZ/Data/Atlantic/Faroe.tz
 lib/Time/OlsonTZ/Data/Atlantic/Madeira.tz
 lib/Time/OlsonTZ/Data/Atlantic/Reykjavik.tz
 lib/Time/OlsonTZ/Data/Atlantic/South_Georgia.tz
-lib/Time/OlsonTZ/Data/Atlantic/St_Helena.tz
 lib/Time/OlsonTZ/Data/Atlantic/Stanley.tz
 lib/Time/OlsonTZ/Data/Australia/Adelaide.tz
 lib/Time/OlsonTZ/Data/Australia/Brisbane.tz
@@ -491,12 +480,6 @@ tzsrc/tzfile.h
 tzsrc/tzselect.8
 tzsrc/tzselect.8.txt
 tzsrc/tzselect.ksh
-tzsrc/usno1988
-tzsrc/usno1989
-tzsrc/usno1989a
-tzsrc/usno1995
-tzsrc/usno1997
-tzsrc/usno1998
 tzsrc/workman.sh
 tzsrc/yearistype.sh
 tzsrc/zdump.8
@@ -506,4 +489,5 @@ tzsrc/zic.8
 tzsrc/zic.8.txt
 tzsrc/zic.c
 tzsrc/zone.tab
+tzsrc/zone1970.tab
 tzsrc/zoneinfo2tdf.pl
