@@ -40,7 +40,7 @@ DESCRIPTION
 
        -v     Be more verbose, and complain about the following situations:
 
-              The input data specifies a link to a link.
+              The input specifies a link to a link.
 
               A year that appears in a data file is outside the range of years
               representable by time(2) values.
@@ -193,7 +193,7 @@ DESCRIPTION
 
        For example:
 
-            Zone  Australia/Adelaide  9:30    Aus         AC%sT   1971 Oct 31 2:00
+            Zone  Australia/Adelaide  9:30    Aus         AC%sT   1971 Oct 31  2:00
 
        The fields that make up a zone line are:
 
@@ -241,14 +241,14 @@ DESCRIPTION
 
        A link line has the form
 
-            Link  LINK-FROM        LINK-TO
+            Link  TARGET           LINK-NAME
 
        For example:
 
             Link  Europe/Istanbul  Asia/Istanbul
 
-       The LINK-FROM field should appear as the NAME field in some zone line.
-       The LINK-TO field is used as an alternate name for that zone; it has
+       The TARGET field should appear as the NAME field in some zone line.
+       The LINK-NAME field is used as an alternate name for that zone; it has
        the same syntax as a zone line's NAME field.
 
        Except for continuation lines, lines may appear in any order in the
@@ -294,9 +294,8 @@ EXTENDED EXAMPLE
 
          Link    Europe/Zurich  Switzerland
 
-       In this example, the zone is named Europe/Zurich but it has an alias
-
-       as Switzerland.  This example says that Zurich was 34 minutes and 8
+       In this example, the zone is named Europe/Zurich but it has an alias as
+       Switzerland.  This example says that Zurich was 34 minutes and 8
        seconds west of UT until 1853-07-16 at 00:00, when the legal offset was
        changed to 7o26'22.50''; although this works out to 0:29:45.50, the
        input format cannot represent fractional seconds so it is rounded here.
@@ -315,7 +314,7 @@ EXTENDED EXAMPLE
 
        For purposes of display, "LMT" and "BMT" were initially used,
        respectively.  Since Swiss rules and later EU rules were applied, the
-       display name for the timezone has been CET for standard time and CEST
+       display name for the time zone has been CET for standard time and CEST
        for daylight saving time.
 
 NOTES

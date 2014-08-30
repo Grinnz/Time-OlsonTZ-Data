@@ -5,14 +5,11 @@ time2posix, posix2time \- convert seconds since the Epoch
 .nf
 .ie \n(.g .ds - \f(CW-\fP
 .el ds - \-
-.B #include <sys/types.h>
 .B #include <time.h>
 .PP
-.B time_t time2posix(t)
-.B time_t t
+.B time_t time2posix(time_t t);
 .PP
-.B time_t posix2time(t)
-.B time_t t
+.B time_t posix2time(time_t t);
 .PP
 .B cc ... \*-ltz
 .fi
@@ -28,9 +25,8 @@ time2posix, posix2time \- convert seconds since the Epoch
 ..
 IEEE Standard 1003.1
 (POSIX)
-legislates that a time_t value of
-536457599 shall correspond to "Wed Dec 31 23:59:59 UTC 1986."
-This effectively implies that POSIX time_t's cannot include leap
+requires the time_t value 536457599 to stand for 1986-12-31 23:59:59 UTC.
+This effectively implies that POSIX time_t values cannot include leap
 seconds and,
 therefore,
 that the system time must be adjusted as each leap occurs.

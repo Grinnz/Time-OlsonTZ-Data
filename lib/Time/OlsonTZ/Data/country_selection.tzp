@@ -105,9 +105,9 @@ use strict;
 				olson_description => "Davis Station, Vestfold Hills",
 				timezone_name => "Antarctica/Davis",
 			},
-			"Dumont-d'Urville Station, Terre Adelie" => {
+			"Dumont-d'Urville Station, Adelie Land" => {
 				location_coords => "-6640+14001",
-				olson_description => "Dumont-d'Urville Station, Terre Adelie",
+				olson_description => "Dumont-d'Urville Station, Adelie Land",
 				timezone_name => "Antarctica/DumontDUrville",
 			},
 			"Mawson Station, Holme Bay" => {

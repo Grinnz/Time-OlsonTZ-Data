@@ -43,7 +43,7 @@ package Time::OlsonTZ::Data;
 use warnings;
 use strict;
 
-our $VERSION = "0.201406";
+our $VERSION = "0.201407";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -83,7 +83,7 @@ retain this format in the future.
 
 =cut
 
-use constant olson_version => "2014f";
+use constant olson_version => "2014g";
 
 =item olson_code_version
 
@@ -92,7 +92,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_code_version => "2014f";
+use constant olson_code_version => "2014g";
 
 =item olson_data_version
 
@@ -101,7 +101,7 @@ module encapsulates.
 
 =cut
 
-use constant olson_data_version => "2014f";
+use constant olson_data_version => "2014g";
 
 =back
 
@@ -121,34 +121,31 @@ values are all C<undef>.
 
 my $cn = q(+{ map { ($_ => undef) } qw(
 	Africa/Abidjan Africa/Accra Africa/Addis_Ababa Africa/Algiers
-	Africa/Asmara Africa/Bangui Africa/Bissau Africa/Blantyre
-	Africa/Brazzaville Africa/Bujumbura Africa/Cairo Africa/Casablanca
-	Africa/Ceuta Africa/Dar_es_Salaam Africa/Djibouti Africa/Douala
-	Africa/El_Aaiun Africa/Gaborone Africa/Harare Africa/Johannesburg
-	Africa/Kampala Africa/Khartoum Africa/Kigali Africa/Kinshasa
-	Africa/Lagos Africa/Libreville Africa/Luanda Africa/Lubumbashi
-	Africa/Lusaka Africa/Malabo Africa/Maputo Africa/Maseru Africa/Mbabane
-	Africa/Mogadishu Africa/Monrovia Africa/Nairobi Africa/Ndjamena
-	Africa/Niamey Africa/Porto-Novo Africa/Tripoli Africa/Tunis
-	Africa/Windhoek America/Adak America/Anchorage America/Antigua
-	America/Araguaina America/Argentina/Buenos_Aires
-	America/Argentina/Catamarca America/Argentina/Cordoba
-	America/Argentina/Jujuy America/Argentina/La_Rioja
-	America/Argentina/Mendoza America/Argentina/Rio_Gallegos
-	America/Argentina/Salta America/Argentina/San_Juan
-	America/Argentina/San_Luis America/Argentina/Tucuman
-	America/Argentina/Ushuaia America/Asuncion America/Atikokan
-	America/Bahia America/Bahia_Banderas America/Barbados America/Belem
-	America/Belize America/Blanc-Sablon America/Boa_Vista America/Bogota
-	America/Boise America/Cambridge_Bay America/Campo_Grande America/Cancun
-	America/Caracas America/Cayenne America/Cayman America/Chicago
-	America/Chihuahua America/Costa_Rica America/Creston America/Cuiaba
-	America/Curacao America/Danmarkshavn America/Dawson America/Dawson_Creek
-	America/Denver America/Detroit America/Edmonton America/Eirunepe
-	America/El_Salvador America/Fortaleza America/Glace_Bay America/Godthab
-	America/Goose_Bay America/Grand_Turk America/Guatemala America/Guayaquil
-	America/Guyana America/Halifax America/Havana America/Hermosillo
-	America/Indiana/Indianapolis America/Indiana/Knox
+	Africa/Asmara Africa/Bissau Africa/Blantyre Africa/Bujumbura
+	Africa/Cairo Africa/Casablanca Africa/Ceuta Africa/Dar_es_Salaam
+	Africa/Djibouti Africa/El_Aaiun Africa/Gaborone Africa/Harare
+	Africa/Johannesburg Africa/Kampala Africa/Khartoum Africa/Kigali
+	Africa/Lagos Africa/Lubumbashi Africa/Lusaka Africa/Maputo Africa/Maseru
+	Africa/Mbabane Africa/Mogadishu Africa/Monrovia Africa/Nairobi
+	Africa/Ndjamena Africa/Tripoli Africa/Tunis Africa/Windhoek America/Adak
+	America/Anchorage America/Antigua America/Araguaina
+	America/Argentina/Buenos_Aires America/Argentina/Catamarca
+	America/Argentina/Cordoba America/Argentina/Jujuy
+	America/Argentina/La_Rioja America/Argentina/Mendoza
+	America/Argentina/Rio_Gallegos America/Argentina/Salta
+	America/Argentina/San_Juan America/Argentina/San_Luis
+	America/Argentina/Tucuman America/Argentina/Ushuaia America/Asuncion
+	America/Atikokan America/Bahia America/Bahia_Banderas America/Barbados
+	America/Belem America/Belize America/Blanc-Sablon America/Boa_Vista
+	America/Bogota America/Boise America/Cambridge_Bay America/Campo_Grande
+	America/Cancun America/Caracas America/Cayenne America/Cayman
+	America/Chicago America/Chihuahua America/Costa_Rica America/Creston
+	America/Cuiaba America/Curacao America/Danmarkshavn America/Dawson
+	America/Dawson_Creek America/Denver America/Detroit America/Edmonton
+	America/Eirunepe America/El_Salvador America/Fortaleza America/Glace_Bay
+	America/Godthab America/Goose_Bay America/Grand_Turk America/Guatemala
+	America/Guayaquil America/Guyana America/Halifax America/Havana
+	America/Hermosillo America/Indiana/Indianapolis America/Indiana/Knox
 	America/Indiana/Marengo America/Indiana/Petersburg
 	America/Indiana/Tell_City America/Indiana/Vevay
 	America/Indiana/Vincennes America/Indiana/Winamac America/Inuvik
@@ -275,14 +272,23 @@ be found in the L</olson_canonical_names> hash.
 my $li = q(+{
 	"Africa/Asmera" => "Africa/Asmara",
 	"Africa/Bamako" => "Africa/Abidjan",
+	"Africa/Bangui" => "Africa/Lagos",
 	"Africa/Banjul" => "Africa/Abidjan",
+	"Africa/Brazzaville" => "Africa/Lagos",
 	"Africa/Conakry" => "Africa/Abidjan",
 	"Africa/Dakar" => "Africa/Abidjan",
+	"Africa/Douala" => "Africa/Lagos",
 	"Africa/Freetown" => "Africa/Abidjan",
 	"Africa/Juba" => "Africa/Khartoum",
+	"Africa/Kinshasa" => "Africa/Lagos",
+	"Africa/Libreville" => "Africa/Lagos",
 	"Africa/Lome" => "Africa/Abidjan",
+	"Africa/Luanda" => "Africa/Lagos",
+	"Africa/Malabo" => "Africa/Lagos",
+	"Africa/Niamey" => "Africa/Lagos",
 	"Africa/Nouakchott" => "Africa/Abidjan",
 	"Africa/Ouagadougou" => "Africa/Abidjan",
+	"Africa/Porto-Novo" => "Africa/Lagos",
 	"Africa/Sao_Tome" => "Africa/Abidjan",
 	"Africa/Timbuktu" => "Africa/Abidjan",
 	"America/Anguilla" => "America/Port_of_Spain",
