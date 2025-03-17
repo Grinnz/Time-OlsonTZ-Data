@@ -4,13 +4,13 @@
       "Andrew Main (Zefram) <zefram@fysh.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Module::Build version 0.4205",
+   "generated_by" : "Module::Build version 0.4232",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "Time-OlsonTZ-Data",
    "prereqs" : {
@@ -47,14 +47,19 @@
    "provides" : {
       "Time::OlsonTZ::Data" : {
          "file" : "lib/Time/OlsonTZ/Data.pm",
-         "version" : "0.201407"
+         "version" : "0.202501"
       }
    },
    "release_status" : "stable",
    "resources" : {
+      "bugtracker" : {
+         "mailto" : "bug-Time-OlsonTZ-Download@rt.cpan.org",
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Time-OlsonTZ-Download"
+      },
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.201407"
+   "version" : "0.202501",
+   "x_serialization_backend" : "JSON::PP version 2.93"
 }
