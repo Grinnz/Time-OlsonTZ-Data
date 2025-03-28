@@ -27,11 +27,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: perl -V
-      - name: install deps using cpanm
-        uses: perl-actions/install-with-cpanm@v1
-        with:
-          sudo: false
-          args: --sudo -v --installdeps .
       - name: install prebuild deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
@@ -39,6 +34,11 @@ jobs:
           args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
       - run: perl prebuild get_olson download latest
       - run: perl prebuild build_data
+      - name: install deps using cpanm
+        uses: perl-actions/install-with-cpanm@v1
+        with:
+          sudo: false
+          args: --sudo --installdeps .
       - run: perl Build.PL
       - run: ./Build
       - run: ./Build test
@@ -78,11 +78,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: perl -V
-      - name: install deps using cpanm
-        uses: perl-actions/install-with-cpanm@v1
-        with:
-          sudo: false
-          args: -v --installdeps .
       - name: install prebuild deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
@@ -90,6 +85,11 @@ jobs:
           args: -v Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
       - run: perl prebuild get_olson download latest
       - run: perl prebuild build_data
+      - name: install deps using cpanm
+        uses: perl-actions/install-with-cpanm@v1
+        with:
+          sudo: false
+          args: -v --installdeps .
       - run: perl Build.PL
       - run: ./Build
       - run: ./Build test
