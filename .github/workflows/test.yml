@@ -31,7 +31,7 @@ jobs:
         uses: perl-actions/install-with-cpanm@v1
         with:
           sudo: false
-          args: --sudo --installdeps .
+          args: --sudo -v --installdeps .
       - name: install prebuild deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
