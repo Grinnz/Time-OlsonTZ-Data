@@ -32,11 +32,11 @@ jobs:
         with:
           sudo: false
           args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
-      - run: curl -o "$GITHUB_WORKSPACE/tzdb-2025b.tar.lz" https://data.iana.org/time-zones/releases/tzdb-2025b.tar.lz
-      - run: tar -C "$GITHUB_WORKSPACE" -x --lzip -f "$GITHUB_WORKSPACE/tzdb-2025b.tar.lz"
-      - run: rm "$GITHUB_WORKSPACE/tzdb-2025b.tar.lz"
-      - run: perl prebuild get_olson local "$GITHUB_WORKSPACE/tzdb-2025b" 2025b
-      - run: rm -rf "$GITHUB_WORKSPACE/tzdb-2025b/"
+      - run: curl -v -o tzdb-2025b.tar.lz https://data.iana.org/time-zones/releases/tzdb-2025b.tar.lz
+      - run: tar -x --lzip -f tzdb-2025b.tar.lz
+      - run: rm tzdb-2025b.tar.lz
+      - run: perl prebuild get_olson local tzdb-2025b 2025b
+      - run: rm -rf ./tzdb-2025b/
       - run: perl prebuild build_data
       - name: install deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
@@ -87,11 +87,11 @@ jobs:
         with:
           sudo: false
           args: -v Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
-      - run: curl -o "$GITHUB_WORKSPACE/tzdb-2025b.tar.lz" https://data.iana.org/time-zones/releases/tzdb-2025b.tar.lz
-      - run: tar -C "$GITHUB_WORKSPACE" -x --lzip -f "$GITHUB_WORKSPACE/tzdb-2025b.tar.lz"
-      - run: rm "$GITHUB_WORKSPACE/tzdb-2025b.tar.lz"
-      - run: perl prebuild get_olson local "$GITHUB_WORKSPACE/tzdb-2025b" 2025b
-      - run: rm -rf "$GITHUB_WORKSPACE/tzdb-2025b/"
+      - run: curl -v -o tzdb-2025b.tar.lz https://data.iana.org/time-zones/releases/tzdb-2025b.tar.lz
+      - run: tar -x --lzip -f tzdb-2025b.tar.lz
+      - run: rm tzdb-2025b.tar.lz
+      - run: perl prebuild get_olson local tzdb-2025b 2025b
+      - run: rm -rf ./tzdb-2025b/
       - run: perl prebuild build_data
       - name: install deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
