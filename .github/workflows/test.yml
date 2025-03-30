@@ -31,7 +31,7 @@ jobs:
         uses: perl-actions/install-with-cpanm@v1
         with:
           sudo: false
-          args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
+          args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
       - run: perl prebuild bare
       - run: curl -o tzdata2025b.tar.gz https://data.iana.org/time-zones/releases/tzdata2025b.tar.gz
       - run: curl -o tzcode2025b.tar.gz https://data.iana.org/time-zones/releases/tzcode2025b.tar.gz
@@ -67,7 +67,9 @@ jobs:
           since-perl: v5.6.0
           with-devel: true
 
+# tzdata build fails in these containers currently
   linux:
+    if: false
     runs-on: ubuntu-latest
     name: "perl ${{ matrix.perl-version }}"
 
@@ -90,7 +92,7 @@ jobs:
         uses: perl-actions/install-with-cpanm@v1
         with:
           sudo: false
-          args: -v Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
+          args: Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
       - run: perl prebuild bare
       - run: curl -o tzdata2025b.tar.gz https://data.iana.org/time-zones/releases/tzdata2025b.tar.gz
       - run: curl -o tzcode2025b.tar.gz https://data.iana.org/time-zones/releases/tzcode2025b.tar.gz
@@ -105,7 +107,7 @@ jobs:
         uses: perl-actions/install-with-cpanm@v1
         with:
           sudo: false
-          args: -v --installdeps .
+          args: --installdeps .
       - run: perl Build.PL
       - run: ./Build
       - run: ./Build test
