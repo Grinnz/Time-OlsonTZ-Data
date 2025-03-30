@@ -32,6 +32,7 @@ jobs:
         with:
           sudo: false
           args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
+      - run: perl prebuild bare
       - run: curl -o tzdata2025b.tar.gz https://data.iana.org/time-zones/releases/tzdata2025b.tar.gz
       - run: curl -o tzcode2025b.tar.gz https://data.iana.org/time-zones/releases/tzcode2025b.tar.gz
       - run: mkdir tzdb-2025b
@@ -39,8 +40,8 @@ jobs:
       - run: tar -C tzdb-2025b -xzf tzcode2025b.tar.gz
       - run: rm tzdata2025b.tar.gz tzcode2025b.tar.gz
       - run: perl prebuild get_olson local tzdb-2025b 2025b
-      - run: rm -rf ./tzdb-2025b/
       - run: perl prebuild build_data
+      - run: rm -rf ./tzdb-2025b/
       - name: install deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
@@ -90,6 +91,7 @@ jobs:
         with:
           sudo: false
           args: -v Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
+      - run: perl prebuild bare
       - run: curl -o tzdata2025b.tar.gz https://data.iana.org/time-zones/releases/tzdata2025b.tar.gz
       - run: curl -o tzcode2025b.tar.gz https://data.iana.org/time-zones/releases/tzcode2025b.tar.gz
       - run: mkdir tzdb-2025b
@@ -97,8 +99,8 @@ jobs:
       - run: tar -C tzdb-2025b -xzf tzcode2025b.tar.gz
       - run: rm tzdata2025b.tar.gz tzcode2025b.tar.gz
       - run: perl prebuild get_olson local tzdb-2025b 2025b
-      - run: rm -rf ./tzdb-2025b/
       - run: perl prebuild build_data
+      - run: rm -rf ./tzdb-2025b/
       - name: install deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
