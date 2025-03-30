@@ -33,7 +33,7 @@ jobs:
           sudo: false
           args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
       - run: curl -o tzdb-2025b.tar.lz https://data.iana.org/time-zones/releases/tzdb-2025b.tar.lz
-      - run: tar -xO --lzip -f tzdb-2025b.tar.lz
+      - run: tar -x --lzip -f tzdb-2025b.tar.lz
       - run: rm tzdb-2025b.tar.lz
       - run: perl prebuild get_olson local tzdb-2025b 2025b
       - run: rm -rf tzdb-2025b/
@@ -88,7 +88,7 @@ jobs:
           sudo: false
           args: -v Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download
       - run: curl -o tzdb-2025b.tar.lz https://data.iana.org/time-zones/releases/tzdb-2025b.tar.lz
-      - run: tar -xO --lzip -f tzdb-2025b.tar.lz
+      - run: tar -x --lzip -f tzdb-2025b.tar.lz
       - run: rm tzdb-2025b.tar.lz
       - run: perl prebuild get_olson local tzdb-2025b 2025b
       - run: rm -rf tzdb-2025b/
