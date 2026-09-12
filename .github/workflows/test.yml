@@ -33,15 +33,15 @@ jobs:
           sudo: false
           args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
       - run: perl prebuild bare
-      - run: curl -o tzdata2025b.tar.gz https://data.iana.org/time-zones/releases/tzdata2025b.tar.gz
-      - run: curl -o tzcode2025b.tar.gz https://data.iana.org/time-zones/releases/tzcode2025b.tar.gz
-      - run: mkdir tzdb-2025b
-      - run: tar -C tzdb-2025b -xzf tzdata2025b.tar.gz
-      - run: tar -C tzdb-2025b -xzf tzcode2025b.tar.gz
-      - run: rm tzdata2025b.tar.gz tzcode2025b.tar.gz
-      - run: perl prebuild get_olson local tzdb-2025b 2025b
+      - run: curl -o tzdata2026d.tar.gz https://data.iana.org/time-zones/releases/tzdata2026d.tar.gz
+      - run: curl -o tzcode2026d.tar.gz https://data.iana.org/time-zones/releases/tzcode2026d.tar.gz
+      - run: mkdir tzdb-2026d
+      - run: tar -C tzdb-2026d -xzf tzdata2026d.tar.gz
+      - run: tar -C tzdb-2026d -xzf tzcode2026d.tar.gz
+      - run: rm tzdata2026d.tar.gz tzcode2026d.tar.gz
+      - run: perl prebuild get_olson local tzdb-2026d 2026d
       - run: perl prebuild build_data
-      - run: rm -rf ./tzdb-2025b/
+      - run: rm -rf ./tzdb-2026d/
       - name: install deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
@@ -94,15 +94,15 @@ jobs:
           sudo: false
           args: Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
       - run: perl prebuild bare
-      - run: curl -o tzdata2025b.tar.gz https://data.iana.org/time-zones/releases/tzdata2025b.tar.gz
-      - run: curl -o tzcode2025b.tar.gz https://data.iana.org/time-zones/releases/tzcode2025b.tar.gz
-      - run: mkdir tzdb-2025b
-      - run: tar -C tzdb-2025b -xzf tzdata2025b.tar.gz
-      - run: tar -C tzdb-2025b -xzf tzcode2025b.tar.gz
-      - run: rm tzdata2025b.tar.gz tzcode2025b.tar.gz
-      - run: perl prebuild get_olson local tzdb-2025b 2025b
+      - run: curl -o tzdata2026d.tar.gz https://data.iana.org/time-zones/releases/tzdata2026d.tar.gz
+      - run: curl -o tzcode2026d.tar.gz https://data.iana.org/time-zones/releases/tzcode2026d.tar.gz
+      - run: mkdir tzdb-2026d
+      - run: tar -C tzdb-2026d -xzf tzdata2026d.tar.gz
+      - run: tar -C tzdb-2026d -xzf tzcode2026d.tar.gz
+      - run: rm tzdata2026d.tar.gz tzcode2026d.tar.gz
+      - run: perl prebuild get_olson local tzdb-2026d 2026d
       - run: perl prebuild build_data
-      - run: rm -rf ./tzdb-2025b/
+      - run: rm -rf ./tzdb-2026d/
       - name: install deps using cpanm
         uses: perl-actions/install-with-cpanm@v1
         with:
