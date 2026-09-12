@@ -43,7 +43,7 @@ jobs:
       - run: perl prebuild build_data
       - run: rm -rf ./tzdb-2026d/
       - name: install deps using cpanm
-        uses: perl-actions/install-with-cpanm@v1
+        uses: perl-actions/install-with-cpanm@v2
         with:
           sudo: false
           args: --sudo --installdeps .
@@ -104,7 +104,7 @@ jobs:
       - run: perl prebuild build_data
       - run: rm -rf ./tzdb-2026d/
       - name: install deps using cpanm
-        uses: perl-actions/install-with-cpanm@v1
+        uses: perl-actions/install-with-cpanm@v2
         with:
           sudo: false
           args: --installdeps .
