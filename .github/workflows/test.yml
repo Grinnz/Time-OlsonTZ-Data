@@ -33,8 +33,8 @@ jobs:
           sudo: false
           args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
       - run: perl prebuild bare
-      - run: curl -o tzdata-latest.tar.gz https://data.iana.org/time-zones/releases/tzdata-latest.tar.gz
-      - run: curl -o tzcode-latest.tar.gz https://data.iana.org/time-zones/releases/tzcode-latest.tar.gz
+      - run: curl -o tzdata-latest.tar.gz https://data.iana.org/time-zones/tzdata-latest.tar.gz
+      - run: curl -o tzcode-latest.tar.gz https://data.iana.org/time-zones/tzcode-latest.tar.gz
       - run: mkdir tzdb-latest
       - run: tar -C tzdb-latest -xzf tzdata-latest.tar.gz
       - run: tar -C tzdb-latest -xzf tzcode-latest.tar.gz
@@ -95,8 +95,8 @@ jobs:
           sudo: false
           args: Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
       - run: perl prebuild bare
-      - run: curl -o tzdata-latest.tar.gz https://data.iana.org/time-zones/releases/tzdata-latest.tar.gz
-      - run: curl -o tzcode-latest.tar.gz https://data.iana.org/time-zones/releases/tzcode-latest.tar.gz
+      - run: curl -o tzdata-latest.tar.gz https://data.iana.org/time-zones/tzdata-latest.tar.gz
+      - run: curl -o tzcode-latest.tar.gz https://data.iana.org/time-zones/tzcode-latest.tar.gz
       - run: mkdir tzdb-latest
       - run: tar -C tzdb-latest -xzf tzdata-latest.tar.gz
       - run: tar -C tzdb-latest -xzf tzcode-latest.tar.gz
