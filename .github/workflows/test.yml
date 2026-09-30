@@ -31,7 +31,7 @@ jobs:
         uses: perl-actions/install-with-cpanm@v2
         with:
           sudo: false
-          args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
+          args: --sudo Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile Test::Pod Test::Pod::Coverage
       - run: perl prebuild bare
       - run: curl -o tzdata-latest.tar.gz https://data.iana.org/time-zones/tzdata-latest.tar.gz
       - run: curl -o tzcode-latest.tar.gz https://data.iana.org/time-zones/tzcode-latest.tar.gz
@@ -70,7 +70,6 @@ jobs:
 
 # tzdata build fails in these containers currently
   linux:
-    if: false
     runs-on: ubuntu-latest
     name: "perl ${{ matrix.perl-version }}"
 
@@ -93,7 +92,7 @@ jobs:
         uses: perl-actions/install-with-cpanm@v2
         with:
           sudo: false
-          args: Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile
+          args: Data::Pond End File::Path IO::File IPC::Filter Time::OlsonTZ::Download DateTime::TimeZone::Tzfile Test::Pod Test::Pod::Coverage
       - run: perl prebuild bare
       - run: curl -o tzdata-latest.tar.gz https://data.iana.org/time-zones/tzdata-latest.tar.gz
       - run: curl -o tzcode-latest.tar.gz https://data.iana.org/time-zones/tzcode-latest.tar.gz
