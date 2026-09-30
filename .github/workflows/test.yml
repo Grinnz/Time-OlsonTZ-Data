@@ -39,7 +39,7 @@ jobs:
       - run: tar -C tzdb-latest -xzf tzdata-latest.tar.gz
       - run: tar -C tzdb-latest -xzf tzcode-latest.tar.gz
       - run: rm tzdata-latest.tar.gz tzcode-latest.tar.gz
-      - run: echo "tzdb_version=$(cat tzdata-latest/version)" >> $GITHUB_ENV
+      - run: echo "tzdb_version=$(cat tzdb-latest/version)" >> $GITHUB_ENV
       - run: perl prebuild get_olson local tzdb-latest $tzdb_version
       - run: perl prebuild build_data
       - run: rm -rf ./tzdb-latest/
@@ -101,7 +101,7 @@ jobs:
       - run: tar -C tzdb-latest -xzf tzdata-latest.tar.gz
       - run: tar -C tzdb-latest -xzf tzcode-latest.tar.gz
       - run: rm tzdata-latest.tar.gz tzcode-latest.tar.gz
-      - run: echo "tzdb_version=$(cat tzdata-latest/version)" >> $GITHUB_ENV
+      - run: echo "tzdb_version=$(cat tzdb-latest/version)" >> $GITHUB_ENV
       - run: perl prebuild get_olson local tzdb-latest $tzdb_version
       - run: perl prebuild build_data
       - run: rm -rf ./tzdb-latest/
