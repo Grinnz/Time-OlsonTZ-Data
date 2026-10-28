@@ -68,7 +68,6 @@ jobs:
           since-perl: v5.40
           with-devel: true
 
-# tzdata build fails in these containers currently
   linux:
     runs-on: ubuntu-latest
     name: "perl ${{ matrix.perl-version }}"
@@ -87,6 +86,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+      - name: use gawk instead of mawk
+        run: apt-get update && apt-get install -y gawk
       - run: perl -V
       - name: install prebuild deps using cpanm
         uses: perl-actions/install-with-cpanm@v2
